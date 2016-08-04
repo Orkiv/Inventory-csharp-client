@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Response
+# IO.InventoryClient.Model.Response
 ## Properties
 
 Name | Type | Description | Notes

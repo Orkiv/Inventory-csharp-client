@@ -1,4 +1,4 @@
-# IO.Swagger.Api.DefaultApi
+# IO.InventoryClient.Api.DefaultApi
 
 All URIs are relative to *https://www.orkiv.com/i/api*
 
@@ -36,9 +36,9 @@ Method | HTTP request | Description
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
 
 namespace Example
 {
@@ -100,9 +100,9 @@ This endpoint does not need any parameter.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
 
 namespace Example
 {
@@ -168,9 +168,9 @@ Name | Type | Description  | Notes
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
 
 namespace Example
 {
@@ -238,9 +238,9 @@ If no ID is specified a new category will be created!
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
 
 namespace Example
 {
@@ -308,9 +308,9 @@ Name | Type | Description  | Notes
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
 
 namespace Example
 {
@@ -376,9 +376,9 @@ Name | Type | Description  | Notes
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
 
 namespace Example
 {
@@ -444,9 +444,9 @@ Name | Type | Description  | Notes
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
 
 namespace Example
 {
@@ -512,9 +512,9 @@ Name | Type | Description  | Notes
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
 
 namespace Example
 {
@@ -582,9 +582,9 @@ Name | Type | Description  | Notes
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
 
 namespace Example
 {
@@ -650,9 +650,9 @@ Name | Type | Description  | Notes
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
 
 namespace Example
 {
@@ -718,9 +718,9 @@ Name | Type | Description  | Notes
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
 
 namespace Example
 {
@@ -786,9 +786,9 @@ Name | Type | Description  | Notes
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
 
 namespace Example
 {
@@ -854,9 +854,9 @@ Name | Type | Description  | Notes
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
 
 namespace Example
 {
@@ -934,9 +934,9 @@ Name | Type | Description  | Notes
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
 
 namespace Example
 {
@@ -1014,9 +1014,9 @@ Name | Type | Description  | Notes
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
 
 namespace Example
 {
@@ -1082,9 +1082,9 @@ Name | Type | Description  | Notes
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
 
 namespace Example
 {
@@ -1146,9 +1146,9 @@ This endpoint does not need any parameter.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
 
 namespace Example
 {
@@ -1214,9 +1214,9 @@ Name | Type | Description  | Notes
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
 
 namespace Example
 {
@@ -1284,9 +1284,9 @@ Name | Type | Description  | Notes
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
 
 namespace Example
 {
@@ -1354,9 +1354,9 @@ Will ovveride the current event of the specified service.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
 
 namespace Example
 {

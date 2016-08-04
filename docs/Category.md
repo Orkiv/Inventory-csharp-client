@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Category
+# IO.InventoryClient.Model.Category
 ## Properties
 
 Name | Type | Description | Notes

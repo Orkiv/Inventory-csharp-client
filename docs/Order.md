@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Order
+# IO.InventoryClient.Model.Order
 ## Properties
 
 Name | Type | Description | Notes

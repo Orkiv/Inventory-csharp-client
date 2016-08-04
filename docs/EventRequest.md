@@ -1,4 +1,4 @@
-# IO.Swagger.Model.EventRequest
+# IO.InventoryClient.Model.EventRequest
 ## Properties
 
 Name | Type | Description | Notes

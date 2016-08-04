@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Service
+# IO.InventoryClient.Model.Service
 ## Properties
 
 Name | Type | Description | Notes

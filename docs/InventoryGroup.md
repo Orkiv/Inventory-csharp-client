@@ -1,4 +1,4 @@
-# IO.Swagger.Model.InventoryGroup
+# IO.InventoryClient.Model.InventoryGroup
 ## Properties
 
 Name | Type | Description | Notes

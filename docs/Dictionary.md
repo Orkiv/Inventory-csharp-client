@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Dictionary
+# IO.InventoryClient.Model.Dictionary
 ## Properties
 
 Name | Type | Description | Notes

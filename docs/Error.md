@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Error
+# IO.InventoryClient.Model.Error
 ## Properties
 
 Name | Type | Description | Notes
