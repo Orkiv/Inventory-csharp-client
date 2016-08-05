@@ -1,4 +1,4 @@
-# IO.InventoryClient.Model.Item
+# IO.InventoryClient.Model.ItemRequest
 ## Properties
 
 Name | Type | Description | Notes
@@ -9,10 +9,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Name of item | [optional] 
 **Ordprice** | **decimal?** | Integer value of price | [optional] 
 **Price** | **string** | String value of price | [optional] 
-**Variations** | [**List&lt;Variation&gt;**](Variation.md) |  | [optional] 
 **Quantity** | **string** | Inventory quantity | [optional] 
-**Media** | **List&lt;string&gt;** | Array of item media | [optional] 
-**Buy** | **string** | Link to checkout page of item | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

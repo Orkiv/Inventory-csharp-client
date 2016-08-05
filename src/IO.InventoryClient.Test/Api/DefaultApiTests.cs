@@ -106,7 +106,7 @@ namespace IO.InventoryClient.Test
         public void CategoriesPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //Dictionary query = null;
+            //Category query = null;
             //var response = instance.CategoriesPost(query);
             //Assert.IsInstanceOf<List<Category>> (response, "response is List<Category>");
         }
@@ -131,7 +131,7 @@ namespace IO.InventoryClient.Test
         public void ItemAddPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //Item item = null;
+            //ItemRequest item = null;
             //var response = instance.ItemAddPost(item);
             //Assert.IsInstanceOf<Item> (response, "response is Item");
         }
@@ -143,7 +143,7 @@ namespace IO.InventoryClient.Test
         public void ItemAddbulkPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //List<Item> items = null;
+            //List<ItemRequest> items = null;
             //var response = instance.ItemAddbulkPost(items);
             //Assert.IsInstanceOf<Response> (response, "response is Response");
         }
@@ -161,6 +161,43 @@ namespace IO.InventoryClient.Test
         }
         
         /// <summary>
+        /// Test ItemGet
+        /// </summary>
+        [Test]
+        public void ItemGetTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string id = null;
+            //var response = instance.ItemGet(id);
+            //Assert.IsInstanceOf<Item> (response, "response is Item");
+        }
+        
+        /// <summary>
+        /// Test ItemMediaDelete
+        /// </summary>
+        [Test]
+        public void ItemMediaDeleteTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string imageurl = null;
+            //var response = instance.ItemMediaDelete(imageurl);
+            //Assert.IsInstanceOf<Response> (response, "response is Response");
+        }
+        
+        /// <summary>
+        /// Test ItemMediaPost
+        /// </summary>
+        [Test]
+        public void ItemMediaPostTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string id = null;
+            //System.IO.Stream image = null;
+            //var response = instance.ItemMediaPost(id, image);
+            //Assert.IsInstanceOf<string> (response, "response is string");
+        }
+        
+        /// <summary>
         /// Test ItemPut
         /// </summary>
         [Test]
@@ -168,7 +205,7 @@ namespace IO.InventoryClient.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //Dictionary item = null;
+            //ItemRequest item = null;
             //var response = instance.ItemPut(id, item);
             //Assert.IsInstanceOf<Response> (response, "response is Response");
         }
@@ -180,8 +217,10 @@ namespace IO.InventoryClient.Test
         public void ItemsCountPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //Dictionary query = null;
-            //var response = instance.ItemsCountPost(query);
+            //decimal? minprice = null;
+            //decimal? maxprice = null;
+            //ItemRequest query = null;
+            //var response = instance.ItemsCountPost(minprice, maxprice, query);
             //Assert.IsInstanceOf<decimal?> (response, "response is decimal?");
         }
         
@@ -192,21 +231,11 @@ namespace IO.InventoryClient.Test
         public void ItemsPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //Dictionary query = null;
-            //var response = instance.ItemsPost(query);
+            //decimal? minprice = null;
+            //decimal? maxprice = null;
+            //ItemRequest query = null;
+            //var response = instance.ItemsPost(minprice, maxprice, query);
             //Assert.IsInstanceOf<List<Item>> (response, "response is List<Item>");
-        }
-        
-        /// <summary>
-        /// Test ItemsallfieldsPost
-        /// </summary>
-        [Test]
-        public void ItemsallfieldsPostTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //Dictionary query = null;
-            //var response = instance.ItemsallfieldsPost(query);
-            //Assert.IsInstanceOf<List<Dictionary>> (response, "response is List<Dictionary>");
         }
         
         /// <summary>
@@ -216,8 +245,20 @@ namespace IO.InventoryClient.Test
         public void OrdersPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //Dictionary query = null;
+            //OrderRequest query = null;
             //var response = instance.OrdersPost(query);
+            //Assert.IsInstanceOf<List<Order>> (response, "response is List<Order>");
+        }
+        
+        /// <summary>
+        /// Test OrdersServicesPost
+        /// </summary>
+        [Test]
+        public void OrdersServicesPostTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //OrderRequest query = null;
+            //var response = instance.OrdersServicesPost(query);
             //Assert.IsInstanceOf<List<Order>> (response, "response is List<Order>");
         }
         
@@ -234,27 +275,9 @@ namespace IO.InventoryClient.Test
             //string search = null;
             //decimal? minprice = null;
             //decimal? maxprice = null;
-            //Dictionary query = null;
+            //ItemRequest query = null;
             //var response = instance.QueryPost(page, categoryid, sort, search, minprice, maxprice, query);
             //Assert.IsInstanceOf<List<Item>> (response, "response is List<Item>");
-        }
-        
-        /// <summary>
-        /// Test QueryallfieldsPost
-        /// </summary>
-        [Test]
-        public void QueryallfieldsPostTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //decimal? page = null;
-            //string categoryid = null;
-            //string sort = null;
-            //string search = null;
-            //decimal? minprice = null;
-            //decimal? maxprice = null;
-            //Dictionary query = null;
-            //var response = instance.QueryallfieldsPost(page, categoryid, sort, search, minprice, maxprice, query);
-            //Assert.IsInstanceOf<List<Dictionary>> (response, "response is List<Dictionary>");
         }
         
         /// <summary>
@@ -281,13 +304,25 @@ namespace IO.InventoryClient.Test
         }
         
         /// <summary>
+        /// Test ServicesOpenGet
+        /// </summary>
+        [Test]
+        public void ServicesOpenGetTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string id = null;
+            //var response = instance.ServicesOpenGet(id);
+            //Assert.IsInstanceOf<Service> (response, "response is Service");
+        }
+        
+        /// <summary>
         /// Test ServicesPost
         /// </summary>
         [Test]
         public void ServicesPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //Service service = null;
+            //ServiceRequest service = null;
             //var response = instance.ServicesPost(service);
             //Assert.IsInstanceOf<Service> (response, "response is Service");
         }
@@ -300,8 +335,58 @@ namespace IO.InventoryClient.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //Service service = null;
+            //ServiceRequest service = null;
             //var response = instance.ServicesPut(id, service);
+            //Assert.IsInstanceOf<Response> (response, "response is Response");
+        }
+        
+        /// <summary>
+        /// Test VariationDelete
+        /// </summary>
+        [Test]
+        public void VariationDeleteTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string id = null;
+            //var response = instance.VariationDelete(id);
+            //Assert.IsInstanceOf<Response> (response, "response is Response");
+        }
+        
+        /// <summary>
+        /// Test VariationGet
+        /// </summary>
+        [Test]
+        public void VariationGetTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string id = null;
+            //var response = instance.VariationGet(id);
+            //Assert.IsInstanceOf<Variation> (response, "response is Variation");
+        }
+        
+        /// <summary>
+        /// Test VariationPost
+        /// </summary>
+        [Test]
+        public void VariationPostTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string id = null;
+            //Variation item = null;
+            //var response = instance.VariationPost(id, item);
+            //Assert.IsInstanceOf<Response> (response, "response is Response");
+        }
+        
+        /// <summary>
+        /// Test VariationPut
+        /// </summary>
+        [Test]
+        public void VariationPutTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string id = null;
+            //Variation item = null;
+            //var response = instance.VariationPut(id, item);
             //Assert.IsInstanceOf<Response> (response, "response is Response");
         }
         

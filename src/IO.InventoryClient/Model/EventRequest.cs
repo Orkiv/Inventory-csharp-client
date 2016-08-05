@@ -44,8 +44,8 @@ namespace IO.InventoryClient.Model
         /// </summary>
         /// <param name="Url">URL for the server to request on successful subscription to specified service.</param>
         /// <param name="Serviceid">ServiceID to bind event to..</param>
-        /// <param name="Postbody">Postbody.</param>
-        public EventRequest(string Url = null, string Serviceid = null, Dictionary Postbody = null)
+        /// <param name="Postbody">Valid JSON of Key-value parameters to post to url.</param>
+        public EventRequest(string Url = null, string Serviceid = null, string Postbody = null)
         {
             this.Url = Url;
             this.Serviceid = Serviceid;
@@ -65,10 +65,11 @@ namespace IO.InventoryClient.Model
         [DataMember(Name="serviceid", EmitDefaultValue=false)]
         public string Serviceid { get; set; }
         /// <summary>
-        /// Gets or Sets Postbody
+        /// Valid JSON of Key-value parameters to post to url
         /// </summary>
+        /// <value>Valid JSON of Key-value parameters to post to url</value>
         [DataMember(Name="postbody", EmitDefaultValue=false)]
-        public Dictionary Postbody { get; set; }
+        public string Postbody { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

@@ -85,7 +85,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="query">Category to query against system (optional)</param>
         /// <returns>List&lt;Category&gt;</returns>
-        List<Category> CategoriesPost (Dictionary query = null);
+        List<Category> CategoriesPost (Category query = null);
 
         /// <summary>
         /// 
@@ -96,7 +96,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="query">Category to query against system (optional)</param>
         /// <returns>ApiResponse of List&lt;Category&gt;</returns>
-        ApiResponse<List<Category>> CategoriesPostWithHttpInfo (Dictionary query = null);
+        ApiResponse<List<Category>> CategoriesPostWithHttpInfo (Category query = null);
         /// <summary>
         /// 
         /// </summary>
@@ -129,7 +129,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="item">Item to create.</param>
         /// <returns>Item</returns>
-        Item ItemAddPost (Item item);
+        Item ItemAddPost (ItemRequest item);
 
         /// <summary>
         /// 
@@ -140,7 +140,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="item">Item to create.</param>
         /// <returns>ApiResponse of Item</returns>
-        ApiResponse<Item> ItemAddPostWithHttpInfo (Item item);
+        ApiResponse<Item> ItemAddPostWithHttpInfo (ItemRequest item);
         /// <summary>
         /// 
         /// </summary>
@@ -150,7 +150,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="items">Items to create.</param>
         /// <returns>Response</returns>
-        Response ItemAddbulkPost (List<Item> items);
+        Response ItemAddbulkPost (List<ItemRequest> items);
 
         /// <summary>
         /// 
@@ -161,7 +161,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="items">Items to create.</param>
         /// <returns>ApiResponse of Response</returns>
-        ApiResponse<Response> ItemAddbulkPostWithHttpInfo (List<Item> items);
+        ApiResponse<Response> ItemAddbulkPostWithHttpInfo (List<ItemRequest> items);
         /// <summary>
         /// 
         /// </summary>
@@ -190,10 +190,75 @@ namespace IO.InventoryClient.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Item ID to open.</param>
+        /// <returns>Item</returns>
+        Item ItemGet (string id);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Item ID to open.</param>
+        /// <returns>ApiResponse of Item</returns>
+        ApiResponse<Item> ItemGetWithHttpInfo (string id);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="imageurl">URL of image to remove</param>
+        /// <returns>Response</returns>
+        Response ItemMediaDelete (string imageurl);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="imageurl">URL of image to remove</param>
+        /// <returns>ApiResponse of Response</returns>
+        ApiResponse<Response> ItemMediaDeleteWithHttpInfo (string imageurl);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is currently in testing.
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Valid item id to bind image to.</param>
+        /// <param name="image">Image.</param>
+        /// <returns>string</returns>
+        string ItemMediaPost (string id, System.IO.Stream image);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is currently in testing.
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Valid item id to bind image to.</param>
+        /// <param name="image">Image.</param>
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> ItemMediaPostWithHttpInfo (string id, System.IO.Stream image);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">item id to update.</param>
         /// <param name="item">New item information.</param>
         /// <returns>Response</returns>
-        Response ItemPut (string id, Dictionary item);
+        Response ItemPut (string id, ItemRequest item);
 
         /// <summary>
         /// 
@@ -205,7 +270,7 @@ namespace IO.InventoryClient.Api
         /// <param name="id">item id to update.</param>
         /// <param name="item">New item information.</param>
         /// <returns>ApiResponse of Response</returns>
-        ApiResponse<Response> ItemPutWithHttpInfo (string id, Dictionary item);
+        ApiResponse<Response> ItemPutWithHttpInfo (string id, ItemRequest item);
         /// <summary>
         /// 
         /// </summary>
@@ -213,9 +278,11 @@ namespace IO.InventoryClient.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minprice">Min price of items to find (optional)</param>
+        /// <param name="maxprice">Max price of items to find (optional)</param>
         /// <param name="query">Item to query against system. (optional)</param>
         /// <returns>decimal?</returns>
-        decimal? ItemsCountPost (Dictionary query = null);
+        decimal? ItemsCountPost (decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null);
 
         /// <summary>
         /// 
@@ -224,9 +291,11 @@ namespace IO.InventoryClient.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minprice">Min price of items to find (optional)</param>
+        /// <param name="maxprice">Max price of items to find (optional)</param>
         /// <param name="query">Item to query against system. (optional)</param>
         /// <returns>ApiResponse of decimal?</returns>
-        ApiResponse<decimal?> ItemsCountPostWithHttpInfo (Dictionary query = null);
+        ApiResponse<decimal?> ItemsCountPostWithHttpInfo (decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null);
         /// <summary>
         /// 
         /// </summary>
@@ -234,9 +303,11 @@ namespace IO.InventoryClient.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minprice">Min price of items to find (optional)</param>
+        /// <param name="maxprice">Max price of items to find (optional)</param>
         /// <param name="query">Item to query against system. (optional)</param>
         /// <returns>List&lt;Item&gt;</returns>
-        List<Item> ItemsPost (Dictionary query = null);
+        List<Item> ItemsPost (decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null);
 
         /// <summary>
         /// 
@@ -245,9 +316,11 @@ namespace IO.InventoryClient.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minprice">Min price of items to find (optional)</param>
+        /// <param name="maxprice">Max price of items to find (optional)</param>
         /// <param name="query">Item to query against system. (optional)</param>
         /// <returns>ApiResponse of List&lt;Item&gt;</returns>
-        ApiResponse<List<Item>> ItemsPostWithHttpInfo (Dictionary query = null);
+        ApiResponse<List<Item>> ItemsPostWithHttpInfo (decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null);
         /// <summary>
         /// 
         /// </summary>
@@ -255,30 +328,9 @@ namespace IO.InventoryClient.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="query">Item to query against system. (optional)</param>
-        /// <returns>List&lt;Dictionary&gt;</returns>
-        List<Dictionary> ItemsallfieldsPost (Dictionary query = null);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="query">Item to query against system. (optional)</param>
-        /// <returns>ApiResponse of List&lt;Dictionary&gt;</returns>
-        ApiResponse<List<Dictionary>> ItemsallfieldsPostWithHttpInfo (Dictionary query = null);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="query">Order to query against system. (optional)</param>
+        /// <param name="query">Order to query against item invoices. (optional)</param>
         /// <returns>List&lt;Order&gt;</returns>
-        List<Order> OrdersPost (Dictionary query = null);
+        List<Order> OrdersPost (OrderRequest query = null);
 
         /// <summary>
         /// 
@@ -287,9 +339,30 @@ namespace IO.InventoryClient.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="query">Order to query against system. (optional)</param>
+        /// <param name="query">Order to query against item invoices. (optional)</param>
         /// <returns>ApiResponse of List&lt;Order&gt;</returns>
-        ApiResponse<List<Order>> OrdersPostWithHttpInfo (Dictionary query = null);
+        ApiResponse<List<Order>> OrdersPostWithHttpInfo (OrderRequest query = null);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="query">Order to query against service invoices. (optional)</param>
+        /// <returns>List&lt;Order&gt;</returns>
+        List<Order> OrdersServicesPost (OrderRequest query = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="query">Order to query against service invoices. (optional)</param>
+        /// <returns>ApiResponse of List&lt;Order&gt;</returns>
+        ApiResponse<List<Order>> OrdersServicesPostWithHttpInfo (OrderRequest query = null);
         /// <summary>
         /// 
         /// </summary>
@@ -301,11 +374,11 @@ namespace IO.InventoryClient.Api
         /// <param name="categoryid">Get items under specified category id. (optional)</param>
         /// <param name="sort">Comma delimited Sort string. ie ; +ordprice. Please use number based fields only (optional)</param>
         /// <param name="search">Performs a regex pattern match against the items within your account (optional)</param>
-        /// <param name="minprice">Min price in hundreds. (optional)</param>
-        /// <param name="maxprice">Max price in hudreds. (optional)</param>
+        /// <param name="minprice">Min price in hundreds (cents). (optional)</param>
+        /// <param name="maxprice">Max price in hundreds (cents). (optional)</param>
         /// <param name="query">Custom parameters to query against system. (optional)</param>
         /// <returns>List&lt;Item&gt;</returns>
-        List<Item> QueryPost (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, Dictionary query = null);
+        List<Item> QueryPost (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null);
 
         /// <summary>
         /// 
@@ -318,44 +391,11 @@ namespace IO.InventoryClient.Api
         /// <param name="categoryid">Get items under specified category id. (optional)</param>
         /// <param name="sort">Comma delimited Sort string. ie ; +ordprice. Please use number based fields only (optional)</param>
         /// <param name="search">Performs a regex pattern match against the items within your account (optional)</param>
-        /// <param name="minprice">Min price in hundreds. (optional)</param>
-        /// <param name="maxprice">Max price in hudreds. (optional)</param>
+        /// <param name="minprice">Min price in hundreds (cents). (optional)</param>
+        /// <param name="maxprice">Max price in hundreds (cents). (optional)</param>
         /// <param name="query">Custom parameters to query against system. (optional)</param>
         /// <returns>ApiResponse of List&lt;Item&gt;</returns>
-        ApiResponse<List<Item>> QueryPostWithHttpInfo (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, Dictionary query = null);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="page">Current page index. (optional)</param>
-        /// <param name="categoryid">Get items under specified category id. (optional)</param>
-        /// <param name="sort">Comma delimited Sort string. ie ; +ordprice. Please use number based fields only (optional)</param>
-        /// <param name="search">Performs a regex pattern match against the items within your account (optional)</param>
-        /// <param name="minprice">Min price in hundreds. (optional)</param>
-        /// <param name="maxprice">Max price in hudreds. (optional)</param>
-        /// <param name="query">Custom parameters to query against system. (optional)</param>
-        /// <returns>List&lt;Dictionary&gt;</returns>
-        List<Dictionary> QueryallfieldsPost (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, Dictionary query = null);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="page">Current page index. (optional)</param>
-        /// <param name="categoryid">Get items under specified category id. (optional)</param>
-        /// <param name="sort">Comma delimited Sort string. ie ; +ordprice. Please use number based fields only (optional)</param>
-        /// <param name="search">Performs a regex pattern match against the items within your account (optional)</param>
-        /// <param name="minprice">Min price in hundreds. (optional)</param>
-        /// <param name="maxprice">Max price in hudreds. (optional)</param>
-        /// <param name="query">Custom parameters to query against system. (optional)</param>
-        /// <returns>ApiResponse of List&lt;Dictionary&gt;</returns>
-        ApiResponse<List<Dictionary>> QueryallfieldsPostWithHttpInfo (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, Dictionary query = null);
+        ApiResponse<List<Item>> QueryPostWithHttpInfo (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null);
         /// <summary>
         /// 
         /// </summary>
@@ -403,9 +443,30 @@ namespace IO.InventoryClient.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">ID of service to open</param>
+        /// <returns>Service</returns>
+        Service ServicesOpenGet (string id);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">ID of service to open</param>
+        /// <returns>ApiResponse of Service</returns>
+        ApiResponse<Service> ServicesOpenGetWithHttpInfo (string id);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="service">Service to create.</param>
         /// <returns>Service</returns>
-        Service ServicesPost (Service service);
+        Service ServicesPost (ServiceRequest service);
 
         /// <summary>
         /// 
@@ -416,7 +477,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="service">Service to create.</param>
         /// <returns>ApiResponse of Service</returns>
-        ApiResponse<Service> ServicesPostWithHttpInfo (Service service);
+        ApiResponse<Service> ServicesPostWithHttpInfo (ServiceRequest service);
         /// <summary>
         /// 
         /// </summary>
@@ -427,7 +488,7 @@ namespace IO.InventoryClient.Api
         /// <param name="id">ID of the service to update</param>
         /// <param name="service">New service data to set.</param>
         /// <returns>Response</returns>
-        Response ServicesPut (string id, Service service);
+        Response ServicesPut (string id, ServiceRequest service);
 
         /// <summary>
         /// 
@@ -439,7 +500,95 @@ namespace IO.InventoryClient.Api
         /// <param name="id">ID of the service to update</param>
         /// <param name="service">New service data to set.</param>
         /// <returns>ApiResponse of Response</returns>
-        ApiResponse<Response> ServicesPutWithHttpInfo (string id, Service service);
+        ApiResponse<Response> ServicesPutWithHttpInfo (string id, ServiceRequest service);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">variation id to remove</param>
+        /// <returns>Response</returns>
+        Response VariationDelete (string id);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">variation id to remove</param>
+        /// <returns>ApiResponse of Response</returns>
+        ApiResponse<Response> VariationDeleteWithHttpInfo (string id);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Variation ID to open.</param>
+        /// <returns>Variation</returns>
+        Variation VariationGet (string id);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Variation ID to open.</param>
+        /// <returns>ApiResponse of Variation</returns>
+        ApiResponse<Variation> VariationGetWithHttpInfo (string id);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Valid item id to bind variation to.</param>
+        /// <param name="item">Variation information.</param>
+        /// <returns>Response</returns>
+        Response VariationPost (string id, Variation item);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Valid item id to bind variation to.</param>
+        /// <param name="item">Variation information.</param>
+        /// <returns>ApiResponse of Response</returns>
+        ApiResponse<Response> VariationPostWithHttpInfo (string id, Variation item);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">variation id to update.</param>
+        /// <param name="item">New variation information.</param>
+        /// <returns>Response</returns>
+        Response VariationPut (string id, Variation item);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">variation id to update.</param>
+        /// <param name="item">New variation information.</param>
+        /// <returns>ApiResponse of Response</returns>
+        ApiResponse<Response> VariationPutWithHttpInfo (string id, Variation item);
         /// <summary>
         /// 
         /// </summary>
@@ -533,7 +682,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="query">Category to query against system (optional)</param>
         /// <returns>Task of List&lt;Category&gt;</returns>
-        System.Threading.Tasks.Task<List<Category>> CategoriesPostAsync (Dictionary query = null);
+        System.Threading.Tasks.Task<List<Category>> CategoriesPostAsync (Category query = null);
 
         /// <summary>
         /// 
@@ -544,7 +693,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="query">Category to query against system (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;Category&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Category>>> CategoriesPostAsyncWithHttpInfo (Dictionary query = null);
+        System.Threading.Tasks.Task<ApiResponse<List<Category>>> CategoriesPostAsyncWithHttpInfo (Category query = null);
         /// <summary>
         /// 
         /// </summary>
@@ -577,7 +726,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="item">Item to create.</param>
         /// <returns>Task of Item</returns>
-        System.Threading.Tasks.Task<Item> ItemAddPostAsync (Item item);
+        System.Threading.Tasks.Task<Item> ItemAddPostAsync (ItemRequest item);
 
         /// <summary>
         /// 
@@ -588,7 +737,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="item">Item to create.</param>
         /// <returns>Task of ApiResponse (Item)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Item>> ItemAddPostAsyncWithHttpInfo (Item item);
+        System.Threading.Tasks.Task<ApiResponse<Item>> ItemAddPostAsyncWithHttpInfo (ItemRequest item);
         /// <summary>
         /// 
         /// </summary>
@@ -598,7 +747,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="items">Items to create.</param>
         /// <returns>Task of Response</returns>
-        System.Threading.Tasks.Task<Response> ItemAddbulkPostAsync (List<Item> items);
+        System.Threading.Tasks.Task<Response> ItemAddbulkPostAsync (List<ItemRequest> items);
 
         /// <summary>
         /// 
@@ -609,7 +758,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="items">Items to create.</param>
         /// <returns>Task of ApiResponse (Response)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Response>> ItemAddbulkPostAsyncWithHttpInfo (List<Item> items);
+        System.Threading.Tasks.Task<ApiResponse<Response>> ItemAddbulkPostAsyncWithHttpInfo (List<ItemRequest> items);
         /// <summary>
         /// 
         /// </summary>
@@ -638,10 +787,75 @@ namespace IO.InventoryClient.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Item ID to open.</param>
+        /// <returns>Task of Item</returns>
+        System.Threading.Tasks.Task<Item> ItemGetAsync (string id);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Item ID to open.</param>
+        /// <returns>Task of ApiResponse (Item)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Item>> ItemGetAsyncWithHttpInfo (string id);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="imageurl">URL of image to remove</param>
+        /// <returns>Task of Response</returns>
+        System.Threading.Tasks.Task<Response> ItemMediaDeleteAsync (string imageurl);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="imageurl">URL of image to remove</param>
+        /// <returns>Task of ApiResponse (Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Response>> ItemMediaDeleteAsyncWithHttpInfo (string imageurl);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is currently in testing.
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Valid item id to bind image to.</param>
+        /// <param name="image">Image.</param>
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> ItemMediaPostAsync (string id, System.IO.Stream image);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is currently in testing.
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Valid item id to bind image to.</param>
+        /// <param name="image">Image.</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> ItemMediaPostAsyncWithHttpInfo (string id, System.IO.Stream image);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">item id to update.</param>
         /// <param name="item">New item information.</param>
         /// <returns>Task of Response</returns>
-        System.Threading.Tasks.Task<Response> ItemPutAsync (string id, Dictionary item);
+        System.Threading.Tasks.Task<Response> ItemPutAsync (string id, ItemRequest item);
 
         /// <summary>
         /// 
@@ -653,7 +867,7 @@ namespace IO.InventoryClient.Api
         /// <param name="id">item id to update.</param>
         /// <param name="item">New item information.</param>
         /// <returns>Task of ApiResponse (Response)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Response>> ItemPutAsyncWithHttpInfo (string id, Dictionary item);
+        System.Threading.Tasks.Task<ApiResponse<Response>> ItemPutAsyncWithHttpInfo (string id, ItemRequest item);
         /// <summary>
         /// 
         /// </summary>
@@ -661,9 +875,11 @@ namespace IO.InventoryClient.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minprice">Min price of items to find (optional)</param>
+        /// <param name="maxprice">Max price of items to find (optional)</param>
         /// <param name="query">Item to query against system. (optional)</param>
         /// <returns>Task of decimal?</returns>
-        System.Threading.Tasks.Task<decimal?> ItemsCountPostAsync (Dictionary query = null);
+        System.Threading.Tasks.Task<decimal?> ItemsCountPostAsync (decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null);
 
         /// <summary>
         /// 
@@ -672,9 +888,11 @@ namespace IO.InventoryClient.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minprice">Min price of items to find (optional)</param>
+        /// <param name="maxprice">Max price of items to find (optional)</param>
         /// <param name="query">Item to query against system. (optional)</param>
         /// <returns>Task of ApiResponse (decimal?)</returns>
-        System.Threading.Tasks.Task<ApiResponse<decimal?>> ItemsCountPostAsyncWithHttpInfo (Dictionary query = null);
+        System.Threading.Tasks.Task<ApiResponse<decimal?>> ItemsCountPostAsyncWithHttpInfo (decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null);
         /// <summary>
         /// 
         /// </summary>
@@ -682,9 +900,11 @@ namespace IO.InventoryClient.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minprice">Min price of items to find (optional)</param>
+        /// <param name="maxprice">Max price of items to find (optional)</param>
         /// <param name="query">Item to query against system. (optional)</param>
         /// <returns>Task of List&lt;Item&gt;</returns>
-        System.Threading.Tasks.Task<List<Item>> ItemsPostAsync (Dictionary query = null);
+        System.Threading.Tasks.Task<List<Item>> ItemsPostAsync (decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null);
 
         /// <summary>
         /// 
@@ -693,9 +913,11 @@ namespace IO.InventoryClient.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minprice">Min price of items to find (optional)</param>
+        /// <param name="maxprice">Max price of items to find (optional)</param>
         /// <param name="query">Item to query against system. (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;Item&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Item>>> ItemsPostAsyncWithHttpInfo (Dictionary query = null);
+        System.Threading.Tasks.Task<ApiResponse<List<Item>>> ItemsPostAsyncWithHttpInfo (decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null);
         /// <summary>
         /// 
         /// </summary>
@@ -703,30 +925,9 @@ namespace IO.InventoryClient.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="query">Item to query against system. (optional)</param>
-        /// <returns>Task of List&lt;Dictionary&gt;</returns>
-        System.Threading.Tasks.Task<List<Dictionary>> ItemsallfieldsPostAsync (Dictionary query = null);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="query">Item to query against system. (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;Dictionary&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Dictionary>>> ItemsallfieldsPostAsyncWithHttpInfo (Dictionary query = null);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="query">Order to query against system. (optional)</param>
+        /// <param name="query">Order to query against item invoices. (optional)</param>
         /// <returns>Task of List&lt;Order&gt;</returns>
-        System.Threading.Tasks.Task<List<Order>> OrdersPostAsync (Dictionary query = null);
+        System.Threading.Tasks.Task<List<Order>> OrdersPostAsync (OrderRequest query = null);
 
         /// <summary>
         /// 
@@ -735,9 +936,30 @@ namespace IO.InventoryClient.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="query">Order to query against system. (optional)</param>
+        /// <param name="query">Order to query against item invoices. (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;Order&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Order>>> OrdersPostAsyncWithHttpInfo (Dictionary query = null);
+        System.Threading.Tasks.Task<ApiResponse<List<Order>>> OrdersPostAsyncWithHttpInfo (OrderRequest query = null);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="query">Order to query against service invoices. (optional)</param>
+        /// <returns>Task of List&lt;Order&gt;</returns>
+        System.Threading.Tasks.Task<List<Order>> OrdersServicesPostAsync (OrderRequest query = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="query">Order to query against service invoices. (optional)</param>
+        /// <returns>Task of ApiResponse (List&lt;Order&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<Order>>> OrdersServicesPostAsyncWithHttpInfo (OrderRequest query = null);
         /// <summary>
         /// 
         /// </summary>
@@ -749,11 +971,11 @@ namespace IO.InventoryClient.Api
         /// <param name="categoryid">Get items under specified category id. (optional)</param>
         /// <param name="sort">Comma delimited Sort string. ie ; +ordprice. Please use number based fields only (optional)</param>
         /// <param name="search">Performs a regex pattern match against the items within your account (optional)</param>
-        /// <param name="minprice">Min price in hundreds. (optional)</param>
-        /// <param name="maxprice">Max price in hudreds. (optional)</param>
+        /// <param name="minprice">Min price in hundreds (cents). (optional)</param>
+        /// <param name="maxprice">Max price in hundreds (cents). (optional)</param>
         /// <param name="query">Custom parameters to query against system. (optional)</param>
         /// <returns>Task of List&lt;Item&gt;</returns>
-        System.Threading.Tasks.Task<List<Item>> QueryPostAsync (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, Dictionary query = null);
+        System.Threading.Tasks.Task<List<Item>> QueryPostAsync (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null);
 
         /// <summary>
         /// 
@@ -766,44 +988,11 @@ namespace IO.InventoryClient.Api
         /// <param name="categoryid">Get items under specified category id. (optional)</param>
         /// <param name="sort">Comma delimited Sort string. ie ; +ordprice. Please use number based fields only (optional)</param>
         /// <param name="search">Performs a regex pattern match against the items within your account (optional)</param>
-        /// <param name="minprice">Min price in hundreds. (optional)</param>
-        /// <param name="maxprice">Max price in hudreds. (optional)</param>
+        /// <param name="minprice">Min price in hundreds (cents). (optional)</param>
+        /// <param name="maxprice">Max price in hundreds (cents). (optional)</param>
         /// <param name="query">Custom parameters to query against system. (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;Item&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Item>>> QueryPostAsyncWithHttpInfo (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, Dictionary query = null);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="page">Current page index. (optional)</param>
-        /// <param name="categoryid">Get items under specified category id. (optional)</param>
-        /// <param name="sort">Comma delimited Sort string. ie ; +ordprice. Please use number based fields only (optional)</param>
-        /// <param name="search">Performs a regex pattern match against the items within your account (optional)</param>
-        /// <param name="minprice">Min price in hundreds. (optional)</param>
-        /// <param name="maxprice">Max price in hudreds. (optional)</param>
-        /// <param name="query">Custom parameters to query against system. (optional)</param>
-        /// <returns>Task of List&lt;Dictionary&gt;</returns>
-        System.Threading.Tasks.Task<List<Dictionary>> QueryallfieldsPostAsync (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, Dictionary query = null);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="page">Current page index. (optional)</param>
-        /// <param name="categoryid">Get items under specified category id. (optional)</param>
-        /// <param name="sort">Comma delimited Sort string. ie ; +ordprice. Please use number based fields only (optional)</param>
-        /// <param name="search">Performs a regex pattern match against the items within your account (optional)</param>
-        /// <param name="minprice">Min price in hundreds. (optional)</param>
-        /// <param name="maxprice">Max price in hudreds. (optional)</param>
-        /// <param name="query">Custom parameters to query against system. (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;Dictionary&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Dictionary>>> QueryallfieldsPostAsyncWithHttpInfo (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, Dictionary query = null);
+        System.Threading.Tasks.Task<ApiResponse<List<Item>>> QueryPostAsyncWithHttpInfo (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null);
         /// <summary>
         /// 
         /// </summary>
@@ -851,9 +1040,30 @@ namespace IO.InventoryClient.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">ID of service to open</param>
+        /// <returns>Task of Service</returns>
+        System.Threading.Tasks.Task<Service> ServicesOpenGetAsync (string id);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">ID of service to open</param>
+        /// <returns>Task of ApiResponse (Service)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Service>> ServicesOpenGetAsyncWithHttpInfo (string id);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="service">Service to create.</param>
         /// <returns>Task of Service</returns>
-        System.Threading.Tasks.Task<Service> ServicesPostAsync (Service service);
+        System.Threading.Tasks.Task<Service> ServicesPostAsync (ServiceRequest service);
 
         /// <summary>
         /// 
@@ -864,7 +1074,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="service">Service to create.</param>
         /// <returns>Task of ApiResponse (Service)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Service>> ServicesPostAsyncWithHttpInfo (Service service);
+        System.Threading.Tasks.Task<ApiResponse<Service>> ServicesPostAsyncWithHttpInfo (ServiceRequest service);
         /// <summary>
         /// 
         /// </summary>
@@ -875,7 +1085,7 @@ namespace IO.InventoryClient.Api
         /// <param name="id">ID of the service to update</param>
         /// <param name="service">New service data to set.</param>
         /// <returns>Task of Response</returns>
-        System.Threading.Tasks.Task<Response> ServicesPutAsync (string id, Service service);
+        System.Threading.Tasks.Task<Response> ServicesPutAsync (string id, ServiceRequest service);
 
         /// <summary>
         /// 
@@ -887,7 +1097,95 @@ namespace IO.InventoryClient.Api
         /// <param name="id">ID of the service to update</param>
         /// <param name="service">New service data to set.</param>
         /// <returns>Task of ApiResponse (Response)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Response>> ServicesPutAsyncWithHttpInfo (string id, Service service);
+        System.Threading.Tasks.Task<ApiResponse<Response>> ServicesPutAsyncWithHttpInfo (string id, ServiceRequest service);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">variation id to remove</param>
+        /// <returns>Task of Response</returns>
+        System.Threading.Tasks.Task<Response> VariationDeleteAsync (string id);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">variation id to remove</param>
+        /// <returns>Task of ApiResponse (Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Response>> VariationDeleteAsyncWithHttpInfo (string id);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Variation ID to open.</param>
+        /// <returns>Task of Variation</returns>
+        System.Threading.Tasks.Task<Variation> VariationGetAsync (string id);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Variation ID to open.</param>
+        /// <returns>Task of ApiResponse (Variation)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Variation>> VariationGetAsyncWithHttpInfo (string id);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Valid item id to bind variation to.</param>
+        /// <param name="item">Variation information.</param>
+        /// <returns>Task of Response</returns>
+        System.Threading.Tasks.Task<Response> VariationPostAsync (string id, Variation item);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Valid item id to bind variation to.</param>
+        /// <param name="item">Variation information.</param>
+        /// <returns>Task of ApiResponse (Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Response>> VariationPostAsyncWithHttpInfo (string id, Variation item);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">variation id to update.</param>
+        /// <param name="item">New variation information.</param>
+        /// <returns>Task of Response</returns>
+        System.Threading.Tasks.Task<Response> VariationPutAsync (string id, Variation item);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">variation id to update.</param>
+        /// <param name="item">New variation information.</param>
+        /// <returns>Task of ApiResponse (Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Response>> VariationPutAsyncWithHttpInfo (string id, Variation item);
         /// <summary>
         /// 
         /// </summary>
@@ -1362,7 +1660,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="query">Category to query against system (optional)</param>
         /// <returns>List&lt;Category&gt;</returns>
-        public List<Category> CategoriesPost (Dictionary query = null)
+        public List<Category> CategoriesPost (Category query = null)
         {
              ApiResponse<List<Category>> localVarResponse = CategoriesPostWithHttpInfo(query);
              return localVarResponse.Data;
@@ -1374,7 +1672,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="query">Category to query against system (optional)</param>
         /// <returns>ApiResponse of List&lt;Category&gt;</returns>
-        public ApiResponse< List<Category> > CategoriesPostWithHttpInfo (Dictionary query = null)
+        public ApiResponse< List<Category> > CategoriesPostWithHttpInfo (Category query = null)
         {
 
             var localVarPath = "/categories/";
@@ -1448,7 +1746,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="query">Category to query against system (optional)</param>
         /// <returns>Task of List&lt;Category&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Category>> CategoriesPostAsync (Dictionary query = null)
+        public async System.Threading.Tasks.Task<List<Category>> CategoriesPostAsync (Category query = null)
         {
              ApiResponse<List<Category>> localVarResponse = await CategoriesPostAsyncWithHttpInfo(query);
              return localVarResponse.Data;
@@ -1461,7 +1759,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="query">Category to query against system (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;Category&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Category>>> CategoriesPostAsyncWithHttpInfo (Dictionary query = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<Category>>> CategoriesPostAsyncWithHttpInfo (Category query = null)
         {
 
             var localVarPath = "/categories/";
@@ -1722,7 +2020,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="item">Item to create.</param>
         /// <returns>Item</returns>
-        public Item ItemAddPost (Item item)
+        public Item ItemAddPost (ItemRequest item)
         {
              ApiResponse<Item> localVarResponse = ItemAddPostWithHttpInfo(item);
              return localVarResponse.Data;
@@ -1734,7 +2032,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="item">Item to create.</param>
         /// <returns>ApiResponse of Item</returns>
-        public ApiResponse< Item > ItemAddPostWithHttpInfo (Item item)
+        public ApiResponse< Item > ItemAddPostWithHttpInfo (ItemRequest item)
         {
             // verify the required parameter 'item' is set
             if (item == null)
@@ -1811,7 +2109,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="item">Item to create.</param>
         /// <returns>Task of Item</returns>
-        public async System.Threading.Tasks.Task<Item> ItemAddPostAsync (Item item)
+        public async System.Threading.Tasks.Task<Item> ItemAddPostAsync (ItemRequest item)
         {
              ApiResponse<Item> localVarResponse = await ItemAddPostAsyncWithHttpInfo(item);
              return localVarResponse.Data;
@@ -1824,7 +2122,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="item">Item to create.</param>
         /// <returns>Task of ApiResponse (Item)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Item>> ItemAddPostAsyncWithHttpInfo (Item item)
+        public async System.Threading.Tasks.Task<ApiResponse<Item>> ItemAddPostAsyncWithHttpInfo (ItemRequest item)
         {
             // verify the required parameter 'item' is set
             if (item == null)
@@ -1899,7 +2197,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="items">Items to create.</param>
         /// <returns>Response</returns>
-        public Response ItemAddbulkPost (List<Item> items)
+        public Response ItemAddbulkPost (List<ItemRequest> items)
         {
              ApiResponse<Response> localVarResponse = ItemAddbulkPostWithHttpInfo(items);
              return localVarResponse.Data;
@@ -1911,7 +2209,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="items">Items to create.</param>
         /// <returns>ApiResponse of Response</returns>
-        public ApiResponse< Response > ItemAddbulkPostWithHttpInfo (List<Item> items)
+        public ApiResponse< Response > ItemAddbulkPostWithHttpInfo (List<ItemRequest> items)
         {
             // verify the required parameter 'items' is set
             if (items == null)
@@ -1988,7 +2286,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="items">Items to create.</param>
         /// <returns>Task of Response</returns>
-        public async System.Threading.Tasks.Task<Response> ItemAddbulkPostAsync (List<Item> items)
+        public async System.Threading.Tasks.Task<Response> ItemAddbulkPostAsync (List<ItemRequest> items)
         {
              ApiResponse<Response> localVarResponse = await ItemAddbulkPostAsyncWithHttpInfo(items);
              return localVarResponse.Data;
@@ -2001,7 +2299,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="items">Items to create.</param>
         /// <returns>Task of ApiResponse (Response)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Response>> ItemAddbulkPostAsyncWithHttpInfo (List<Item> items)
+        public async System.Threading.Tasks.Task<ApiResponse<Response>> ItemAddbulkPostAsyncWithHttpInfo (List<ItemRequest> items)
         {
             // verify the required parameter 'items' is set
             if (items == null)
@@ -2237,10 +2535,515 @@ namespace IO.InventoryClient.Api
         ///  
         /// </summary>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Item ID to open.</param>
+        /// <returns>Item</returns>
+        public Item ItemGet (string id)
+        {
+             ApiResponse<Item> localVarResponse = ItemGetWithHttpInfo(id);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Item ID to open.</param>
+        /// <returns>ApiResponse of Item</returns>
+        public ApiResponse< Item > ItemGetWithHttpInfo (string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->ItemGet");
+
+            var localVarPath = "/item/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (id != null) localVarQueryParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // query parameter
+
+            // authentication (APIKey) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("APIKey")))
+            {
+                localVarHeaderParams["APIKey"] = Configuration.GetApiKeyWithPrefix("APIKey");
+            }
+
+            // authentication (AccountID) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("accountid")))
+            {
+                localVarHeaderParams["accountid"] = Configuration.GetApiKeyWithPrefix("accountid");
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ItemGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Item>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Item) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Item)));
+            
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Item ID to open.</param>
+        /// <returns>Task of Item</returns>
+        public async System.Threading.Tasks.Task<Item> ItemGetAsync (string id)
+        {
+             ApiResponse<Item> localVarResponse = await ItemGetAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Item ID to open.</param>
+        /// <returns>Task of ApiResponse (Item)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Item>> ItemGetAsyncWithHttpInfo (string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->ItemGet");
+
+            var localVarPath = "/item/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (id != null) localVarQueryParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // query parameter
+
+            // authentication (APIKey) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("APIKey")))
+            {
+                localVarHeaderParams["APIKey"] = Configuration.GetApiKeyWithPrefix("APIKey");
+            }
+            // authentication (AccountID) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("accountid")))
+            {
+                localVarHeaderParams["accountid"] = Configuration.GetApiKeyWithPrefix("accountid");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ItemGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Item>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Item) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Item)));
+            
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="imageurl">URL of image to remove</param>
+        /// <returns>Response</returns>
+        public Response ItemMediaDelete (string imageurl)
+        {
+             ApiResponse<Response> localVarResponse = ItemMediaDeleteWithHttpInfo(imageurl);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="imageurl">URL of image to remove</param>
+        /// <returns>ApiResponse of Response</returns>
+        public ApiResponse< Response > ItemMediaDeleteWithHttpInfo (string imageurl)
+        {
+            // verify the required parameter 'imageurl' is set
+            if (imageurl == null)
+                throw new ApiException(400, "Missing required parameter 'imageurl' when calling DefaultApi->ItemMediaDelete");
+
+            var localVarPath = "/item-media/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (imageurl != null) localVarQueryParams.Add("imageurl", Configuration.ApiClient.ParameterToString(imageurl)); // query parameter
+
+            // authentication (APIKey) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("APIKey")))
+            {
+                localVarHeaderParams["APIKey"] = Configuration.GetApiKeyWithPrefix("APIKey");
+            }
+
+            // authentication (AccountID) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("accountid")))
+            {
+                localVarHeaderParams["accountid"] = Configuration.GetApiKeyWithPrefix("accountid");
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ItemMediaDelete", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Response>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Response) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
+            
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="imageurl">URL of image to remove</param>
+        /// <returns>Task of Response</returns>
+        public async System.Threading.Tasks.Task<Response> ItemMediaDeleteAsync (string imageurl)
+        {
+             ApiResponse<Response> localVarResponse = await ItemMediaDeleteAsyncWithHttpInfo(imageurl);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="imageurl">URL of image to remove</param>
+        /// <returns>Task of ApiResponse (Response)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Response>> ItemMediaDeleteAsyncWithHttpInfo (string imageurl)
+        {
+            // verify the required parameter 'imageurl' is set
+            if (imageurl == null)
+                throw new ApiException(400, "Missing required parameter 'imageurl' when calling DefaultApi->ItemMediaDelete");
+
+            var localVarPath = "/item-media/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (imageurl != null) localVarQueryParams.Add("imageurl", Configuration.ApiClient.ParameterToString(imageurl)); // query parameter
+
+            // authentication (APIKey) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("APIKey")))
+            {
+                localVarHeaderParams["APIKey"] = Configuration.GetApiKeyWithPrefix("APIKey");
+            }
+            // authentication (AccountID) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("accountid")))
+            {
+                localVarHeaderParams["accountid"] = Configuration.GetApiKeyWithPrefix("accountid");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ItemMediaDelete", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Response>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Response) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
+            
+        }
+
+        /// <summary>
+        ///  This endpoint is currently in testing.
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Valid item id to bind image to.</param>
+        /// <param name="image">Image.</param>
+        /// <returns>string</returns>
+        public string ItemMediaPost (string id, System.IO.Stream image)
+        {
+             ApiResponse<string> localVarResponse = ItemMediaPostWithHttpInfo(id, image);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  This endpoint is currently in testing.
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Valid item id to bind image to.</param>
+        /// <param name="image">Image.</param>
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > ItemMediaPostWithHttpInfo (string id, System.IO.Stream image)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->ItemMediaPost");
+            // verify the required parameter 'image' is set
+            if (image == null)
+                throw new ApiException(400, "Missing required parameter 'image' when calling DefaultApi->ItemMediaPost");
+
+            var localVarPath = "/item-media/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data", 
+                "application/x-www-form-urlencoded"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (id != null) localVarQueryParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // query parameter
+            if (image != null) localVarFileParams.Add("image", Configuration.ApiClient.ParameterToFile("image", image));
+
+            // authentication (APIKey) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("APIKey")))
+            {
+                localVarHeaderParams["APIKey"] = Configuration.GetApiKeyWithPrefix("APIKey");
+            }
+
+            // authentication (AccountID) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("accountid")))
+            {
+                localVarHeaderParams["accountid"] = Configuration.GetApiKeyWithPrefix("accountid");
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ItemMediaPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<string>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (string) Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+            
+        }
+
+        /// <summary>
+        ///  This endpoint is currently in testing.
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Valid item id to bind image to.</param>
+        /// <param name="image">Image.</param>
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> ItemMediaPostAsync (string id, System.IO.Stream image)
+        {
+             ApiResponse<string> localVarResponse = await ItemMediaPostAsyncWithHttpInfo(id, image);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  This endpoint is currently in testing.
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Valid item id to bind image to.</param>
+        /// <param name="image">Image.</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ItemMediaPostAsyncWithHttpInfo (string id, System.IO.Stream image)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->ItemMediaPost");
+            // verify the required parameter 'image' is set
+            if (image == null)
+                throw new ApiException(400, "Missing required parameter 'image' when calling DefaultApi->ItemMediaPost");
+
+            var localVarPath = "/item-media/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data", 
+                "application/x-www-form-urlencoded"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (id != null) localVarQueryParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // query parameter
+            if (image != null) localVarFileParams.Add("image", Configuration.ApiClient.ParameterToFile("image", image));
+
+            // authentication (APIKey) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("APIKey")))
+            {
+                localVarHeaderParams["APIKey"] = Configuration.GetApiKeyWithPrefix("APIKey");
+            }
+            // authentication (AccountID) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("accountid")))
+            {
+                localVarHeaderParams["accountid"] = Configuration.GetApiKeyWithPrefix("accountid");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ItemMediaPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<string>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (string) Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+            
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">item id to update.</param>
         /// <param name="item">New item information.</param>
         /// <returns>Response</returns>
-        public Response ItemPut (string id, Dictionary item)
+        public Response ItemPut (string id, ItemRequest item)
         {
              ApiResponse<Response> localVarResponse = ItemPutWithHttpInfo(id, item);
              return localVarResponse.Data;
@@ -2253,7 +3056,7 @@ namespace IO.InventoryClient.Api
         /// <param name="id">item id to update.</param>
         /// <param name="item">New item information.</param>
         /// <returns>ApiResponse of Response</returns>
-        public ApiResponse< Response > ItemPutWithHttpInfo (string id, Dictionary item)
+        public ApiResponse< Response > ItemPutWithHttpInfo (string id, ItemRequest item)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2335,7 +3138,7 @@ namespace IO.InventoryClient.Api
         /// <param name="id">item id to update.</param>
         /// <param name="item">New item information.</param>
         /// <returns>Task of Response</returns>
-        public async System.Threading.Tasks.Task<Response> ItemPutAsync (string id, Dictionary item)
+        public async System.Threading.Tasks.Task<Response> ItemPutAsync (string id, ItemRequest item)
         {
              ApiResponse<Response> localVarResponse = await ItemPutAsyncWithHttpInfo(id, item);
              return localVarResponse.Data;
@@ -2349,7 +3152,7 @@ namespace IO.InventoryClient.Api
         /// <param name="id">item id to update.</param>
         /// <param name="item">New item information.</param>
         /// <returns>Task of ApiResponse (Response)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Response>> ItemPutAsyncWithHttpInfo (string id, Dictionary item)
+        public async System.Threading.Tasks.Task<ApiResponse<Response>> ItemPutAsyncWithHttpInfo (string id, ItemRequest item)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2426,11 +3229,13 @@ namespace IO.InventoryClient.Api
         ///  
         /// </summary>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minprice">Min price of items to find (optional)</param>
+        /// <param name="maxprice">Max price of items to find (optional)</param>
         /// <param name="query">Item to query against system. (optional)</param>
         /// <returns>decimal?</returns>
-        public decimal? ItemsCountPost (Dictionary query = null)
+        public decimal? ItemsCountPost (decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null)
         {
-             ApiResponse<decimal?> localVarResponse = ItemsCountPostWithHttpInfo(query);
+             ApiResponse<decimal?> localVarResponse = ItemsCountPostWithHttpInfo(minprice, maxprice, query);
              return localVarResponse.Data;
         }
 
@@ -2438,9 +3243,11 @@ namespace IO.InventoryClient.Api
         ///  
         /// </summary>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minprice">Min price of items to find (optional)</param>
+        /// <param name="maxprice">Max price of items to find (optional)</param>
         /// <param name="query">Item to query against system. (optional)</param>
         /// <returns>ApiResponse of decimal?</returns>
-        public ApiResponse< decimal? > ItemsCountPostWithHttpInfo (Dictionary query = null)
+        public ApiResponse< decimal? > ItemsCountPostWithHttpInfo (decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null)
         {
 
             var localVarPath = "/items/count/";
@@ -2467,6 +3274,8 @@ namespace IO.InventoryClient.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
+            if (minprice != null) localVarQueryParams.Add("minprice", Configuration.ApiClient.ParameterToString(minprice)); // query parameter
+            if (maxprice != null) localVarQueryParams.Add("maxprice", Configuration.ApiClient.ParameterToString(maxprice)); // query parameter
             if (query != null && query.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(query); // http body (model) parameter
@@ -2512,11 +3321,13 @@ namespace IO.InventoryClient.Api
         ///  
         /// </summary>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minprice">Min price of items to find (optional)</param>
+        /// <param name="maxprice">Max price of items to find (optional)</param>
         /// <param name="query">Item to query against system. (optional)</param>
         /// <returns>Task of decimal?</returns>
-        public async System.Threading.Tasks.Task<decimal?> ItemsCountPostAsync (Dictionary query = null)
+        public async System.Threading.Tasks.Task<decimal?> ItemsCountPostAsync (decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null)
         {
-             ApiResponse<decimal?> localVarResponse = await ItemsCountPostAsyncWithHttpInfo(query);
+             ApiResponse<decimal?> localVarResponse = await ItemsCountPostAsyncWithHttpInfo(minprice, maxprice, query);
              return localVarResponse.Data;
 
         }
@@ -2525,9 +3336,11 @@ namespace IO.InventoryClient.Api
         ///  
         /// </summary>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minprice">Min price of items to find (optional)</param>
+        /// <param name="maxprice">Max price of items to find (optional)</param>
         /// <param name="query">Item to query against system. (optional)</param>
         /// <returns>Task of ApiResponse (decimal?)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<decimal?>> ItemsCountPostAsyncWithHttpInfo (Dictionary query = null)
+        public async System.Threading.Tasks.Task<ApiResponse<decimal?>> ItemsCountPostAsyncWithHttpInfo (decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null)
         {
 
             var localVarPath = "/items/count/";
@@ -2554,6 +3367,8 @@ namespace IO.InventoryClient.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
+            if (minprice != null) localVarQueryParams.Add("minprice", Configuration.ApiClient.ParameterToString(minprice)); // query parameter
+            if (maxprice != null) localVarQueryParams.Add("maxprice", Configuration.ApiClient.ParameterToString(maxprice)); // query parameter
             if (query != null && query.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(query); // http body (model) parameter
@@ -2597,11 +3412,13 @@ namespace IO.InventoryClient.Api
         ///  
         /// </summary>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minprice">Min price of items to find (optional)</param>
+        /// <param name="maxprice">Max price of items to find (optional)</param>
         /// <param name="query">Item to query against system. (optional)</param>
         /// <returns>List&lt;Item&gt;</returns>
-        public List<Item> ItemsPost (Dictionary query = null)
+        public List<Item> ItemsPost (decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null)
         {
-             ApiResponse<List<Item>> localVarResponse = ItemsPostWithHttpInfo(query);
+             ApiResponse<List<Item>> localVarResponse = ItemsPostWithHttpInfo(minprice, maxprice, query);
              return localVarResponse.Data;
         }
 
@@ -2609,9 +3426,11 @@ namespace IO.InventoryClient.Api
         ///  
         /// </summary>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minprice">Min price of items to find (optional)</param>
+        /// <param name="maxprice">Max price of items to find (optional)</param>
         /// <param name="query">Item to query against system. (optional)</param>
         /// <returns>ApiResponse of List&lt;Item&gt;</returns>
-        public ApiResponse< List<Item> > ItemsPostWithHttpInfo (Dictionary query = null)
+        public ApiResponse< List<Item> > ItemsPostWithHttpInfo (decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null)
         {
 
             var localVarPath = "/items/";
@@ -2638,6 +3457,8 @@ namespace IO.InventoryClient.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
+            if (minprice != null) localVarQueryParams.Add("minprice", Configuration.ApiClient.ParameterToString(minprice)); // query parameter
+            if (maxprice != null) localVarQueryParams.Add("maxprice", Configuration.ApiClient.ParameterToString(maxprice)); // query parameter
             if (query != null && query.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(query); // http body (model) parameter
@@ -2683,11 +3504,13 @@ namespace IO.InventoryClient.Api
         ///  
         /// </summary>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minprice">Min price of items to find (optional)</param>
+        /// <param name="maxprice">Max price of items to find (optional)</param>
         /// <param name="query">Item to query against system. (optional)</param>
         /// <returns>Task of List&lt;Item&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Item>> ItemsPostAsync (Dictionary query = null)
+        public async System.Threading.Tasks.Task<List<Item>> ItemsPostAsync (decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null)
         {
-             ApiResponse<List<Item>> localVarResponse = await ItemsPostAsyncWithHttpInfo(query);
+             ApiResponse<List<Item>> localVarResponse = await ItemsPostAsyncWithHttpInfo(minprice, maxprice, query);
              return localVarResponse.Data;
 
         }
@@ -2696,9 +3519,11 @@ namespace IO.InventoryClient.Api
         ///  
         /// </summary>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="minprice">Min price of items to find (optional)</param>
+        /// <param name="maxprice">Max price of items to find (optional)</param>
         /// <param name="query">Item to query against system. (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;Item&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Item>>> ItemsPostAsyncWithHttpInfo (Dictionary query = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<Item>>> ItemsPostAsyncWithHttpInfo (decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null)
         {
 
             var localVarPath = "/items/";
@@ -2725,6 +3550,8 @@ namespace IO.InventoryClient.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
+            if (minprice != null) localVarQueryParams.Add("minprice", Configuration.ApiClient.ParameterToString(minprice)); // query parameter
+            if (maxprice != null) localVarQueryParams.Add("maxprice", Configuration.ApiClient.ParameterToString(maxprice)); // query parameter
             if (query != null && query.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(query); // http body (model) parameter
@@ -2768,180 +3595,9 @@ namespace IO.InventoryClient.Api
         ///  
         /// </summary>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="query">Item to query against system. (optional)</param>
-        /// <returns>List&lt;Dictionary&gt;</returns>
-        public List<Dictionary> ItemsallfieldsPost (Dictionary query = null)
-        {
-             ApiResponse<List<Dictionary>> localVarResponse = ItemsallfieldsPostWithHttpInfo(query);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="query">Item to query against system. (optional)</param>
-        /// <returns>ApiResponse of List&lt;Dictionary&gt;</returns>
-        public ApiResponse< List<Dictionary> > ItemsallfieldsPostWithHttpInfo (Dictionary query = null)
-        {
-
-            var localVarPath = "/items/?allfields";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
-            if (query != null && query.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(query); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = query; // byte array
-            }
-
-            // authentication (APIKey) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("APIKey")))
-            {
-                localVarHeaderParams["APIKey"] = Configuration.GetApiKeyWithPrefix("APIKey");
-            }
-
-            // authentication (AccountID) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("accountid")))
-            {
-                localVarHeaderParams["accountid"] = Configuration.GetApiKeyWithPrefix("accountid");
-            }
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ItemsallfieldsPost", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<List<Dictionary>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<Dictionary>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Dictionary>)));
-            
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="query">Item to query against system. (optional)</param>
-        /// <returns>Task of List&lt;Dictionary&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Dictionary>> ItemsallfieldsPostAsync (Dictionary query = null)
-        {
-             ApiResponse<List<Dictionary>> localVarResponse = await ItemsallfieldsPostAsyncWithHttpInfo(query);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="query">Item to query against system. (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;Dictionary&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Dictionary>>> ItemsallfieldsPostAsyncWithHttpInfo (Dictionary query = null)
-        {
-
-            var localVarPath = "/items/?allfields";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
-            if (query != null && query.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(query); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = query; // byte array
-            }
-
-            // authentication (APIKey) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("APIKey")))
-            {
-                localVarHeaderParams["APIKey"] = Configuration.GetApiKeyWithPrefix("APIKey");
-            }
-            // authentication (AccountID) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("accountid")))
-            {
-                localVarHeaderParams["accountid"] = Configuration.GetApiKeyWithPrefix("accountid");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ItemsallfieldsPost", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<List<Dictionary>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<Dictionary>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Dictionary>)));
-            
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="query">Order to query against system. (optional)</param>
+        /// <param name="query">Order to query against item invoices. (optional)</param>
         /// <returns>List&lt;Order&gt;</returns>
-        public List<Order> OrdersPost (Dictionary query = null)
+        public List<Order> OrdersPost (OrderRequest query = null)
         {
              ApiResponse<List<Order>> localVarResponse = OrdersPostWithHttpInfo(query);
              return localVarResponse.Data;
@@ -2951,9 +3607,9 @@ namespace IO.InventoryClient.Api
         ///  
         /// </summary>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="query">Order to query against system. (optional)</param>
+        /// <param name="query">Order to query against item invoices. (optional)</param>
         /// <returns>ApiResponse of List&lt;Order&gt;</returns>
-        public ApiResponse< List<Order> > OrdersPostWithHttpInfo (Dictionary query = null)
+        public ApiResponse< List<Order> > OrdersPostWithHttpInfo (OrderRequest query = null)
         {
 
             var localVarPath = "/orders/";
@@ -3025,9 +3681,9 @@ namespace IO.InventoryClient.Api
         ///  
         /// </summary>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="query">Order to query against system. (optional)</param>
+        /// <param name="query">Order to query against item invoices. (optional)</param>
         /// <returns>Task of List&lt;Order&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Order>> OrdersPostAsync (Dictionary query = null)
+        public async System.Threading.Tasks.Task<List<Order>> OrdersPostAsync (OrderRequest query = null)
         {
              ApiResponse<List<Order>> localVarResponse = await OrdersPostAsyncWithHttpInfo(query);
              return localVarResponse.Data;
@@ -3038,9 +3694,9 @@ namespace IO.InventoryClient.Api
         ///  
         /// </summary>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="query">Order to query against system. (optional)</param>
+        /// <param name="query">Order to query against item invoices. (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;Order&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Order>>> OrdersPostAsyncWithHttpInfo (Dictionary query = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<Order>>> OrdersPostAsyncWithHttpInfo (OrderRequest query = null)
         {
 
             var localVarPath = "/orders/";
@@ -3097,6 +3753,177 @@ namespace IO.InventoryClient.Api
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("OrdersPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<Order>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<Order>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Order>)));
+            
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="query">Order to query against service invoices. (optional)</param>
+        /// <returns>List&lt;Order&gt;</returns>
+        public List<Order> OrdersServicesPost (OrderRequest query = null)
+        {
+             ApiResponse<List<Order>> localVarResponse = OrdersServicesPostWithHttpInfo(query);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="query">Order to query against service invoices. (optional)</param>
+        /// <returns>ApiResponse of List&lt;Order&gt;</returns>
+        public ApiResponse< List<Order> > OrdersServicesPostWithHttpInfo (OrderRequest query = null)
+        {
+
+            var localVarPath = "/orders/services/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (query != null && query.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(query); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = query; // byte array
+            }
+
+            // authentication (APIKey) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("APIKey")))
+            {
+                localVarHeaderParams["APIKey"] = Configuration.GetApiKeyWithPrefix("APIKey");
+            }
+
+            // authentication (AccountID) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("accountid")))
+            {
+                localVarHeaderParams["accountid"] = Configuration.GetApiKeyWithPrefix("accountid");
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("OrdersServicesPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<Order>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<Order>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Order>)));
+            
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="query">Order to query against service invoices. (optional)</param>
+        /// <returns>Task of List&lt;Order&gt;</returns>
+        public async System.Threading.Tasks.Task<List<Order>> OrdersServicesPostAsync (OrderRequest query = null)
+        {
+             ApiResponse<List<Order>> localVarResponse = await OrdersServicesPostAsyncWithHttpInfo(query);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="query">Order to query against service invoices. (optional)</param>
+        /// <returns>Task of ApiResponse (List&lt;Order&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<Order>>> OrdersServicesPostAsyncWithHttpInfo (OrderRequest query = null)
+        {
+
+            var localVarPath = "/orders/services/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (query != null && query.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(query); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = query; // byte array
+            }
+
+            // authentication (APIKey) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("APIKey")))
+            {
+                localVarHeaderParams["APIKey"] = Configuration.GetApiKeyWithPrefix("APIKey");
+            }
+            // authentication (AccountID) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("accountid")))
+            {
+                localVarHeaderParams["accountid"] = Configuration.GetApiKeyWithPrefix("accountid");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("OrdersServicesPost", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -3114,11 +3941,11 @@ namespace IO.InventoryClient.Api
         /// <param name="categoryid">Get items under specified category id. (optional)</param>
         /// <param name="sort">Comma delimited Sort string. ie ; +ordprice. Please use number based fields only (optional)</param>
         /// <param name="search">Performs a regex pattern match against the items within your account (optional)</param>
-        /// <param name="minprice">Min price in hundreds. (optional)</param>
-        /// <param name="maxprice">Max price in hudreds. (optional)</param>
+        /// <param name="minprice">Min price in hundreds (cents). (optional)</param>
+        /// <param name="maxprice">Max price in hundreds (cents). (optional)</param>
         /// <param name="query">Custom parameters to query against system. (optional)</param>
         /// <returns>List&lt;Item&gt;</returns>
-        public List<Item> QueryPost (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, Dictionary query = null)
+        public List<Item> QueryPost (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null)
         {
              ApiResponse<List<Item>> localVarResponse = QueryPostWithHttpInfo(page, categoryid, sort, search, minprice, maxprice, query);
              return localVarResponse.Data;
@@ -3132,11 +3959,11 @@ namespace IO.InventoryClient.Api
         /// <param name="categoryid">Get items under specified category id. (optional)</param>
         /// <param name="sort">Comma delimited Sort string. ie ; +ordprice. Please use number based fields only (optional)</param>
         /// <param name="search">Performs a regex pattern match against the items within your account (optional)</param>
-        /// <param name="minprice">Min price in hundreds. (optional)</param>
-        /// <param name="maxprice">Max price in hudreds. (optional)</param>
+        /// <param name="minprice">Min price in hundreds (cents). (optional)</param>
+        /// <param name="maxprice">Max price in hundreds (cents). (optional)</param>
         /// <param name="query">Custom parameters to query against system. (optional)</param>
         /// <returns>ApiResponse of List&lt;Item&gt;</returns>
-        public ApiResponse< List<Item> > QueryPostWithHttpInfo (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, Dictionary query = null)
+        public ApiResponse< List<Item> > QueryPostWithHttpInfo (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null)
         {
 
             var localVarPath = "/query/";
@@ -3218,11 +4045,11 @@ namespace IO.InventoryClient.Api
         /// <param name="categoryid">Get items under specified category id. (optional)</param>
         /// <param name="sort">Comma delimited Sort string. ie ; +ordprice. Please use number based fields only (optional)</param>
         /// <param name="search">Performs a regex pattern match against the items within your account (optional)</param>
-        /// <param name="minprice">Min price in hundreds. (optional)</param>
-        /// <param name="maxprice">Max price in hudreds. (optional)</param>
+        /// <param name="minprice">Min price in hundreds (cents). (optional)</param>
+        /// <param name="maxprice">Max price in hundreds (cents). (optional)</param>
         /// <param name="query">Custom parameters to query against system. (optional)</param>
         /// <returns>Task of List&lt;Item&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Item>> QueryPostAsync (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, Dictionary query = null)
+        public async System.Threading.Tasks.Task<List<Item>> QueryPostAsync (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null)
         {
              ApiResponse<List<Item>> localVarResponse = await QueryPostAsyncWithHttpInfo(page, categoryid, sort, search, minprice, maxprice, query);
              return localVarResponse.Data;
@@ -3237,11 +4064,11 @@ namespace IO.InventoryClient.Api
         /// <param name="categoryid">Get items under specified category id. (optional)</param>
         /// <param name="sort">Comma delimited Sort string. ie ; +ordprice. Please use number based fields only (optional)</param>
         /// <param name="search">Performs a regex pattern match against the items within your account (optional)</param>
-        /// <param name="minprice">Min price in hundreds. (optional)</param>
-        /// <param name="maxprice">Max price in hudreds. (optional)</param>
+        /// <param name="minprice">Min price in hundreds (cents). (optional)</param>
+        /// <param name="maxprice">Max price in hundreds (cents). (optional)</param>
         /// <param name="query">Custom parameters to query against system. (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;Item&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Item>>> QueryPostAsyncWithHttpInfo (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, Dictionary query = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<Item>>> QueryPostAsyncWithHttpInfo (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null)
         {
 
             var localVarPath = "/query/";
@@ -3310,213 +4137,6 @@ namespace IO.InventoryClient.Api
             return new ApiResponse<List<Item>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (List<Item>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Item>)));
-            
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="page">Current page index. (optional)</param>
-        /// <param name="categoryid">Get items under specified category id. (optional)</param>
-        /// <param name="sort">Comma delimited Sort string. ie ; +ordprice. Please use number based fields only (optional)</param>
-        /// <param name="search">Performs a regex pattern match against the items within your account (optional)</param>
-        /// <param name="minprice">Min price in hundreds. (optional)</param>
-        /// <param name="maxprice">Max price in hudreds. (optional)</param>
-        /// <param name="query">Custom parameters to query against system. (optional)</param>
-        /// <returns>List&lt;Dictionary&gt;</returns>
-        public List<Dictionary> QueryallfieldsPost (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, Dictionary query = null)
-        {
-             ApiResponse<List<Dictionary>> localVarResponse = QueryallfieldsPostWithHttpInfo(page, categoryid, sort, search, minprice, maxprice, query);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="page">Current page index. (optional)</param>
-        /// <param name="categoryid">Get items under specified category id. (optional)</param>
-        /// <param name="sort">Comma delimited Sort string. ie ; +ordprice. Please use number based fields only (optional)</param>
-        /// <param name="search">Performs a regex pattern match against the items within your account (optional)</param>
-        /// <param name="minprice">Min price in hundreds. (optional)</param>
-        /// <param name="maxprice">Max price in hudreds. (optional)</param>
-        /// <param name="query">Custom parameters to query against system. (optional)</param>
-        /// <returns>ApiResponse of List&lt;Dictionary&gt;</returns>
-        public ApiResponse< List<Dictionary> > QueryallfieldsPostWithHttpInfo (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, Dictionary query = null)
-        {
-
-            var localVarPath = "/query/?allfields";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
-            if (page != null) localVarQueryParams.Add("page", Configuration.ApiClient.ParameterToString(page)); // query parameter
-            if (categoryid != null) localVarQueryParams.Add("categoryid", Configuration.ApiClient.ParameterToString(categoryid)); // query parameter
-            if (sort != null) localVarQueryParams.Add("sort", Configuration.ApiClient.ParameterToString(sort)); // query parameter
-            if (search != null) localVarQueryParams.Add("search", Configuration.ApiClient.ParameterToString(search)); // query parameter
-            if (minprice != null) localVarQueryParams.Add("minprice", Configuration.ApiClient.ParameterToString(minprice)); // query parameter
-            if (maxprice != null) localVarQueryParams.Add("maxprice", Configuration.ApiClient.ParameterToString(maxprice)); // query parameter
-            if (query != null && query.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(query); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = query; // byte array
-            }
-
-            // authentication (APIKey) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("APIKey")))
-            {
-                localVarHeaderParams["APIKey"] = Configuration.GetApiKeyWithPrefix("APIKey");
-            }
-
-            // authentication (AccountID) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("accountid")))
-            {
-                localVarHeaderParams["accountid"] = Configuration.GetApiKeyWithPrefix("accountid");
-            }
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("QueryallfieldsPost", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<List<Dictionary>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<Dictionary>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Dictionary>)));
-            
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="page">Current page index. (optional)</param>
-        /// <param name="categoryid">Get items under specified category id. (optional)</param>
-        /// <param name="sort">Comma delimited Sort string. ie ; +ordprice. Please use number based fields only (optional)</param>
-        /// <param name="search">Performs a regex pattern match against the items within your account (optional)</param>
-        /// <param name="minprice">Min price in hundreds. (optional)</param>
-        /// <param name="maxprice">Max price in hudreds. (optional)</param>
-        /// <param name="query">Custom parameters to query against system. (optional)</param>
-        /// <returns>Task of List&lt;Dictionary&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Dictionary>> QueryallfieldsPostAsync (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, Dictionary query = null)
-        {
-             ApiResponse<List<Dictionary>> localVarResponse = await QueryallfieldsPostAsyncWithHttpInfo(page, categoryid, sort, search, minprice, maxprice, query);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="page">Current page index. (optional)</param>
-        /// <param name="categoryid">Get items under specified category id. (optional)</param>
-        /// <param name="sort">Comma delimited Sort string. ie ; +ordprice. Please use number based fields only (optional)</param>
-        /// <param name="search">Performs a regex pattern match against the items within your account (optional)</param>
-        /// <param name="minprice">Min price in hundreds. (optional)</param>
-        /// <param name="maxprice">Max price in hudreds. (optional)</param>
-        /// <param name="query">Custom parameters to query against system. (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;Dictionary&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Dictionary>>> QueryallfieldsPostAsyncWithHttpInfo (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, Dictionary query = null)
-        {
-
-            var localVarPath = "/query/?allfields";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
-            if (page != null) localVarQueryParams.Add("page", Configuration.ApiClient.ParameterToString(page)); // query parameter
-            if (categoryid != null) localVarQueryParams.Add("categoryid", Configuration.ApiClient.ParameterToString(categoryid)); // query parameter
-            if (sort != null) localVarQueryParams.Add("sort", Configuration.ApiClient.ParameterToString(sort)); // query parameter
-            if (search != null) localVarQueryParams.Add("search", Configuration.ApiClient.ParameterToString(search)); // query parameter
-            if (minprice != null) localVarQueryParams.Add("minprice", Configuration.ApiClient.ParameterToString(minprice)); // query parameter
-            if (maxprice != null) localVarQueryParams.Add("maxprice", Configuration.ApiClient.ParameterToString(maxprice)); // query parameter
-            if (query != null && query.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(query); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = query; // byte array
-            }
-
-            // authentication (APIKey) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("APIKey")))
-            {
-                localVarHeaderParams["APIKey"] = Configuration.GetApiKeyWithPrefix("APIKey");
-            }
-            // authentication (AccountID) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("accountid")))
-            {
-                localVarHeaderParams["accountid"] = Configuration.GetApiKeyWithPrefix("accountid");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("QueryallfieldsPost", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<List<Dictionary>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<Dictionary>) Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Dictionary>)));
             
         }
 
@@ -3838,9 +4458,172 @@ namespace IO.InventoryClient.Api
         ///  
         /// </summary>
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">ID of service to open</param>
+        /// <returns>Service</returns>
+        public Service ServicesOpenGet (string id)
+        {
+             ApiResponse<Service> localVarResponse = ServicesOpenGetWithHttpInfo(id);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">ID of service to open</param>
+        /// <returns>ApiResponse of Service</returns>
+        public ApiResponse< Service > ServicesOpenGetWithHttpInfo (string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->ServicesOpenGet");
+
+            var localVarPath = "/services/open/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (id != null) localVarQueryParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // query parameter
+
+            // authentication (APIKey) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("APIKey")))
+            {
+                localVarHeaderParams["APIKey"] = Configuration.GetApiKeyWithPrefix("APIKey");
+            }
+
+            // authentication (AccountID) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("accountid")))
+            {
+                localVarHeaderParams["accountid"] = Configuration.GetApiKeyWithPrefix("accountid");
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ServicesOpenGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Service>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Service) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Service)));
+            
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">ID of service to open</param>
+        /// <returns>Task of Service</returns>
+        public async System.Threading.Tasks.Task<Service> ServicesOpenGetAsync (string id)
+        {
+             ApiResponse<Service> localVarResponse = await ServicesOpenGetAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">ID of service to open</param>
+        /// <returns>Task of ApiResponse (Service)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Service>> ServicesOpenGetAsyncWithHttpInfo (string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->ServicesOpenGet");
+
+            var localVarPath = "/services/open/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (id != null) localVarQueryParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // query parameter
+
+            // authentication (APIKey) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("APIKey")))
+            {
+                localVarHeaderParams["APIKey"] = Configuration.GetApiKeyWithPrefix("APIKey");
+            }
+            // authentication (AccountID) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("accountid")))
+            {
+                localVarHeaderParams["accountid"] = Configuration.GetApiKeyWithPrefix("accountid");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ServicesOpenGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Service>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Service) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Service)));
+            
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="service">Service to create.</param>
         /// <returns>Service</returns>
-        public Service ServicesPost (Service service)
+        public Service ServicesPost (ServiceRequest service)
         {
              ApiResponse<Service> localVarResponse = ServicesPostWithHttpInfo(service);
              return localVarResponse.Data;
@@ -3852,7 +4635,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="service">Service to create.</param>
         /// <returns>ApiResponse of Service</returns>
-        public ApiResponse< Service > ServicesPostWithHttpInfo (Service service)
+        public ApiResponse< Service > ServicesPostWithHttpInfo (ServiceRequest service)
         {
             // verify the required parameter 'service' is set
             if (service == null)
@@ -3929,7 +4712,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="service">Service to create.</param>
         /// <returns>Task of Service</returns>
-        public async System.Threading.Tasks.Task<Service> ServicesPostAsync (Service service)
+        public async System.Threading.Tasks.Task<Service> ServicesPostAsync (ServiceRequest service)
         {
              ApiResponse<Service> localVarResponse = await ServicesPostAsyncWithHttpInfo(service);
              return localVarResponse.Data;
@@ -3942,7 +4725,7 @@ namespace IO.InventoryClient.Api
         /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="service">Service to create.</param>
         /// <returns>Task of ApiResponse (Service)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Service>> ServicesPostAsyncWithHttpInfo (Service service)
+        public async System.Threading.Tasks.Task<ApiResponse<Service>> ServicesPostAsyncWithHttpInfo (ServiceRequest service)
         {
             // verify the required parameter 'service' is set
             if (service == null)
@@ -4018,7 +4801,7 @@ namespace IO.InventoryClient.Api
         /// <param name="id">ID of the service to update</param>
         /// <param name="service">New service data to set.</param>
         /// <returns>Response</returns>
-        public Response ServicesPut (string id, Service service)
+        public Response ServicesPut (string id, ServiceRequest service)
         {
              ApiResponse<Response> localVarResponse = ServicesPutWithHttpInfo(id, service);
              return localVarResponse.Data;
@@ -4031,7 +4814,7 @@ namespace IO.InventoryClient.Api
         /// <param name="id">ID of the service to update</param>
         /// <param name="service">New service data to set.</param>
         /// <returns>ApiResponse of Response</returns>
-        public ApiResponse< Response > ServicesPutWithHttpInfo (string id, Service service)
+        public ApiResponse< Response > ServicesPutWithHttpInfo (string id, ServiceRequest service)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -4113,7 +4896,7 @@ namespace IO.InventoryClient.Api
         /// <param name="id">ID of the service to update</param>
         /// <param name="service">New service data to set.</param>
         /// <returns>Task of Response</returns>
-        public async System.Threading.Tasks.Task<Response> ServicesPutAsync (string id, Service service)
+        public async System.Threading.Tasks.Task<Response> ServicesPutAsync (string id, ServiceRequest service)
         {
              ApiResponse<Response> localVarResponse = await ServicesPutAsyncWithHttpInfo(id, service);
              return localVarResponse.Data;
@@ -4127,7 +4910,7 @@ namespace IO.InventoryClient.Api
         /// <param name="id">ID of the service to update</param>
         /// <param name="service">New service data to set.</param>
         /// <returns>Task of ApiResponse (Response)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Response>> ServicesPutAsyncWithHttpInfo (string id, Service service)
+        public async System.Threading.Tasks.Task<ApiResponse<Response>> ServicesPutAsyncWithHttpInfo (string id, ServiceRequest service)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -4191,6 +4974,710 @@ namespace IO.InventoryClient.Api
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ServicesPut", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Response>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Response) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
+            
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">variation id to remove</param>
+        /// <returns>Response</returns>
+        public Response VariationDelete (string id)
+        {
+             ApiResponse<Response> localVarResponse = VariationDeleteWithHttpInfo(id);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">variation id to remove</param>
+        /// <returns>ApiResponse of Response</returns>
+        public ApiResponse< Response > VariationDeleteWithHttpInfo (string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->VariationDelete");
+
+            var localVarPath = "/variation/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (id != null) localVarQueryParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // query parameter
+
+            // authentication (APIKey) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("APIKey")))
+            {
+                localVarHeaderParams["APIKey"] = Configuration.GetApiKeyWithPrefix("APIKey");
+            }
+
+            // authentication (AccountID) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("accountid")))
+            {
+                localVarHeaderParams["accountid"] = Configuration.GetApiKeyWithPrefix("accountid");
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("VariationDelete", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Response>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Response) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
+            
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">variation id to remove</param>
+        /// <returns>Task of Response</returns>
+        public async System.Threading.Tasks.Task<Response> VariationDeleteAsync (string id)
+        {
+             ApiResponse<Response> localVarResponse = await VariationDeleteAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">variation id to remove</param>
+        /// <returns>Task of ApiResponse (Response)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Response>> VariationDeleteAsyncWithHttpInfo (string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->VariationDelete");
+
+            var localVarPath = "/variation/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (id != null) localVarQueryParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // query parameter
+
+            // authentication (APIKey) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("APIKey")))
+            {
+                localVarHeaderParams["APIKey"] = Configuration.GetApiKeyWithPrefix("APIKey");
+            }
+            // authentication (AccountID) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("accountid")))
+            {
+                localVarHeaderParams["accountid"] = Configuration.GetApiKeyWithPrefix("accountid");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("VariationDelete", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Response>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Response) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
+            
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Variation ID to open.</param>
+        /// <returns>Variation</returns>
+        public Variation VariationGet (string id)
+        {
+             ApiResponse<Variation> localVarResponse = VariationGetWithHttpInfo(id);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Variation ID to open.</param>
+        /// <returns>ApiResponse of Variation</returns>
+        public ApiResponse< Variation > VariationGetWithHttpInfo (string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->VariationGet");
+
+            var localVarPath = "/variation/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (id != null) localVarQueryParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // query parameter
+
+            // authentication (APIKey) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("APIKey")))
+            {
+                localVarHeaderParams["APIKey"] = Configuration.GetApiKeyWithPrefix("APIKey");
+            }
+
+            // authentication (AccountID) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("accountid")))
+            {
+                localVarHeaderParams["accountid"] = Configuration.GetApiKeyWithPrefix("accountid");
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("VariationGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Variation>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Variation) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Variation)));
+            
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Variation ID to open.</param>
+        /// <returns>Task of Variation</returns>
+        public async System.Threading.Tasks.Task<Variation> VariationGetAsync (string id)
+        {
+             ApiResponse<Variation> localVarResponse = await VariationGetAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Variation ID to open.</param>
+        /// <returns>Task of ApiResponse (Variation)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Variation>> VariationGetAsyncWithHttpInfo (string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->VariationGet");
+
+            var localVarPath = "/variation/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (id != null) localVarQueryParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // query parameter
+
+            // authentication (APIKey) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("APIKey")))
+            {
+                localVarHeaderParams["APIKey"] = Configuration.GetApiKeyWithPrefix("APIKey");
+            }
+            // authentication (AccountID) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("accountid")))
+            {
+                localVarHeaderParams["accountid"] = Configuration.GetApiKeyWithPrefix("accountid");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("VariationGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Variation>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Variation) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Variation)));
+            
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Valid item id to bind variation to.</param>
+        /// <param name="item">Variation information.</param>
+        /// <returns>Response</returns>
+        public Response VariationPost (string id, Variation item)
+        {
+             ApiResponse<Response> localVarResponse = VariationPostWithHttpInfo(id, item);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Valid item id to bind variation to.</param>
+        /// <param name="item">Variation information.</param>
+        /// <returns>ApiResponse of Response</returns>
+        public ApiResponse< Response > VariationPostWithHttpInfo (string id, Variation item)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->VariationPost");
+            // verify the required parameter 'item' is set
+            if (item == null)
+                throw new ApiException(400, "Missing required parameter 'item' when calling DefaultApi->VariationPost");
+
+            var localVarPath = "/variation/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (id != null) localVarQueryParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // query parameter
+            if (item != null && item.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(item); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = item; // byte array
+            }
+
+            // authentication (APIKey) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("APIKey")))
+            {
+                localVarHeaderParams["APIKey"] = Configuration.GetApiKeyWithPrefix("APIKey");
+            }
+
+            // authentication (AccountID) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("accountid")))
+            {
+                localVarHeaderParams["accountid"] = Configuration.GetApiKeyWithPrefix("accountid");
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("VariationPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Response>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Response) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
+            
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Valid item id to bind variation to.</param>
+        /// <param name="item">Variation information.</param>
+        /// <returns>Task of Response</returns>
+        public async System.Threading.Tasks.Task<Response> VariationPostAsync (string id, Variation item)
+        {
+             ApiResponse<Response> localVarResponse = await VariationPostAsyncWithHttpInfo(id, item);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Valid item id to bind variation to.</param>
+        /// <param name="item">Variation information.</param>
+        /// <returns>Task of ApiResponse (Response)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Response>> VariationPostAsyncWithHttpInfo (string id, Variation item)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->VariationPost");
+            // verify the required parameter 'item' is set
+            if (item == null)
+                throw new ApiException(400, "Missing required parameter 'item' when calling DefaultApi->VariationPost");
+
+            var localVarPath = "/variation/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (id != null) localVarQueryParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // query parameter
+            if (item != null && item.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(item); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = item; // byte array
+            }
+
+            // authentication (APIKey) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("APIKey")))
+            {
+                localVarHeaderParams["APIKey"] = Configuration.GetApiKeyWithPrefix("APIKey");
+            }
+            // authentication (AccountID) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("accountid")))
+            {
+                localVarHeaderParams["accountid"] = Configuration.GetApiKeyWithPrefix("accountid");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("VariationPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Response>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Response) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
+            
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">variation id to update.</param>
+        /// <param name="item">New variation information.</param>
+        /// <returns>Response</returns>
+        public Response VariationPut (string id, Variation item)
+        {
+             ApiResponse<Response> localVarResponse = VariationPutWithHttpInfo(id, item);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">variation id to update.</param>
+        /// <param name="item">New variation information.</param>
+        /// <returns>ApiResponse of Response</returns>
+        public ApiResponse< Response > VariationPutWithHttpInfo (string id, Variation item)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->VariationPut");
+            // verify the required parameter 'item' is set
+            if (item == null)
+                throw new ApiException(400, "Missing required parameter 'item' when calling DefaultApi->VariationPut");
+
+            var localVarPath = "/variation/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (id != null) localVarQueryParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // query parameter
+            if (item != null && item.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(item); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = item; // byte array
+            }
+
+            // authentication (APIKey) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("APIKey")))
+            {
+                localVarHeaderParams["APIKey"] = Configuration.GetApiKeyWithPrefix("APIKey");
+            }
+
+            // authentication (AccountID) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("accountid")))
+            {
+                localVarHeaderParams["accountid"] = Configuration.GetApiKeyWithPrefix("accountid");
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("VariationPut", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Response>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Response) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
+            
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">variation id to update.</param>
+        /// <param name="item">New variation information.</param>
+        /// <returns>Task of Response</returns>
+        public async System.Threading.Tasks.Task<Response> VariationPutAsync (string id, Variation item)
+        {
+             ApiResponse<Response> localVarResponse = await VariationPutAsyncWithHttpInfo(id, item);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="IO.InventoryClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">variation id to update.</param>
+        /// <param name="item">New variation information.</param>
+        /// <returns>Task of ApiResponse (Response)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Response>> VariationPutAsyncWithHttpInfo (string id, Variation item)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DefaultApi->VariationPut");
+            // verify the required parameter 'item' is set
+            if (item == null)
+                throw new ApiException(400, "Missing required parameter 'item' when calling DefaultApi->VariationPut");
+
+            var localVarPath = "/variation/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (id != null) localVarQueryParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // query parameter
+            if (item != null && item.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(item); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = item; // byte array
+            }
+
+            // authentication (APIKey) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("APIKey")))
+            {
+                localVarHeaderParams["APIKey"] = Configuration.GetApiKeyWithPrefix("APIKey");
+            }
+            // authentication (AccountID) required
+            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("accountid")))
+            {
+                localVarHeaderParams["accountid"] = Configuration.GetApiKeyWithPrefix("accountid");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("VariationPut", localVarResponse);
                 if (exception != null) throw exception;
             }
 

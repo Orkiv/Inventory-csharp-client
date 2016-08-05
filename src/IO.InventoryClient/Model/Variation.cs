@@ -34,19 +34,42 @@ using Newtonsoft.Json.Converters;
 namespace IO.InventoryClient.Model
 {
     /// <summary>
-    /// Dictionary
+    /// Variation
     /// </summary>
     [DataContract]
-    public partial class Dictionary : Dictionary<String, string>,  IEquatable<Dictionary>
+    public partial class Variation :  IEquatable<Variation>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Dictionary" /> class.
+        /// Initializes a new instance of the <see cref="Variation" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        public Dictionary()
+        /// <param name="Name">Variation name.</param>
+        /// <param name="PriceChange">New price to set if variation is set (in hundreds).</param>
+        /// <param name="Id">System ID of variation.</param>
+        public Variation(string Name = null, decimal? PriceChange = null, string Id = null)
         {
+            this.Name = Name;
+            this.PriceChange = PriceChange;
+            this.Id = Id;
         }
         
+        /// <summary>
+        /// Variation name
+        /// </summary>
+        /// <value>Variation name</value>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; set; }
+        /// <summary>
+        /// New price to set if variation is set (in hundreds)
+        /// </summary>
+        /// <value>New price to set if variation is set (in hundreds)</value>
+        [DataMember(Name="priceChange", EmitDefaultValue=false)]
+        public decimal? PriceChange { get; set; }
+        /// <summary>
+        /// System ID of variation
+        /// </summary>
+        /// <value>System ID of variation</value>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public string Id { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -54,7 +77,10 @@ namespace IO.InventoryClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Dictionary {\n");
+            sb.Append("class Variation {\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  PriceChange: ").Append(PriceChange).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -63,7 +89,7 @@ namespace IO.InventoryClient.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public  new string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -76,21 +102,36 @@ namespace IO.InventoryClient.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as Dictionary);
+            return this.Equals(obj as Variation);
         }
 
         /// <summary>
-        /// Returns true if Dictionary instances are equal
+        /// Returns true if Variation instances are equal
         /// </summary>
-        /// <param name="other">Instance of Dictionary to be compared</param>
+        /// <param name="other">Instance of Variation to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Dictionary other)
+        public bool Equals(Variation other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
                 return false;
 
-            return false;
+            return 
+                (
+                    this.Name == other.Name ||
+                    this.Name != null &&
+                    this.Name.Equals(other.Name)
+                ) && 
+                (
+                    this.PriceChange == other.PriceChange ||
+                    this.PriceChange != null &&
+                    this.PriceChange.Equals(other.PriceChange)
+                ) && 
+                (
+                    this.Id == other.Id ||
+                    this.Id != null &&
+                    this.Id.Equals(other.Id)
+                );
         }
 
         /// <summary>
@@ -104,6 +145,12 @@ namespace IO.InventoryClient.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
+                if (this.Name != null)
+                    hash = hash * 59 + this.Name.GetHashCode();
+                if (this.PriceChange != null)
+                    hash = hash * 59 + this.PriceChange.GetHashCode();
+                if (this.Id != null)
+                    hash = hash * 59 + this.Id.GetHashCode();
                 return hash;
             }
         }

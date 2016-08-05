@@ -11,17 +11,24 @@ Method | HTTP request | Description
 [**ItemAddPost**](DefaultApi.md#itemaddpost) | **POST** /item/add/ | 
 [**ItemAddbulkPost**](DefaultApi.md#itemaddbulkpost) | **POST** /item/addbulk/ | 
 [**ItemDelete**](DefaultApi.md#itemdelete) | **DELETE** /item/ | 
+[**ItemGet**](DefaultApi.md#itemget) | **GET** /item/ | 
+[**ItemMediaDelete**](DefaultApi.md#itemmediadelete) | **DELETE** /item-media/ | 
+[**ItemMediaPost**](DefaultApi.md#itemmediapost) | **POST** /item-media/ | 
 [**ItemPut**](DefaultApi.md#itemput) | **PUT** /item/ | 
 [**ItemsCountPost**](DefaultApi.md#itemscountpost) | **POST** /items/count/ | 
 [**ItemsPost**](DefaultApi.md#itemspost) | **POST** /items/ | 
-[**ItemsallfieldsPost**](DefaultApi.md#itemsallfieldspost) | **POST** /items/?allfields | 
 [**OrdersPost**](DefaultApi.md#orderspost) | **POST** /orders/ | 
+[**OrdersServicesPost**](DefaultApi.md#ordersservicespost) | **POST** /orders/services/ | 
 [**QueryPost**](DefaultApi.md#querypost) | **POST** /query/ | 
-[**QueryallfieldsPost**](DefaultApi.md#queryallfieldspost) | **POST** /query/?allfields | 
 [**ServicesDelete**](DefaultApi.md#servicesdelete) | **DELETE** /services/ | 
 [**ServicesGet**](DefaultApi.md#servicesget) | **GET** /services/ | 
+[**ServicesOpenGet**](DefaultApi.md#servicesopenget) | **GET** /services/open/ | 
 [**ServicesPost**](DefaultApi.md#servicespost) | **POST** /services/ | 
 [**ServicesPut**](DefaultApi.md#servicesput) | **PUT** /services/ | 
+[**VariationDelete**](DefaultApi.md#variationdelete) | **DELETE** /variation/ | 
+[**VariationGet**](DefaultApi.md#variationget) | **GET** /variation/ | 
+[**VariationPost**](DefaultApi.md#variationpost) | **POST** /variation/ | 
+[**VariationPut**](DefaultApi.md#variationput) | **PUT** /variation/ | 
 [**WriteDelete**](DefaultApi.md#writedelete) | **DELETE** /write/ | 
 [**WritePost**](DefaultApi.md#writepost) | **POST** /write/ | 
 
@@ -160,7 +167,7 @@ Name | Type | Description  | Notes
 
 <a name="categoriespost"></a>
 # **CategoriesPost**
-> List<Category> CategoriesPost (Dictionary query = null)
+> List<Category> CategoriesPost (Category query = null)
 
 
 
@@ -189,7 +196,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("accountid", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var query = new Dictionary(); // Dictionary | Category to query against system (optional) 
+            var query = new Category(); // Category | Category to query against system (optional) 
 
             try
             {
@@ -209,7 +216,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **query** | [**Dictionary**](Dictionary.md)| Category to query against system | [optional] 
+ **query** | [**Category**](Category.md)| Category to query against system | [optional] 
 
 ### Return type
 
@@ -300,7 +307,7 @@ Name | Type | Description  | Notes
 
 <a name="itemaddpost"></a>
 # **ItemAddPost**
-> Item ItemAddPost (Item item)
+> Item ItemAddPost (ItemRequest item)
 
 
 
@@ -329,7 +336,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("accountid", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var item = new Item(); // Item | Item to create.
+            var item = new ItemRequest(); // ItemRequest | Item to create.
 
             try
             {
@@ -349,7 +356,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **item** | [**Item**](Item.md)| Item to create. | 
+ **item** | [**ItemRequest**](ItemRequest.md)| Item to create. | 
 
 ### Return type
 
@@ -368,7 +375,7 @@ Name | Type | Description  | Notes
 
 <a name="itemaddbulkpost"></a>
 # **ItemAddbulkPost**
-> Response ItemAddbulkPost (List<Item> items)
+> Response ItemAddbulkPost (List<ItemRequest> items)
 
 
 
@@ -397,7 +404,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("accountid", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var items = new List<Item>(); // List<Item> | Items to create.
+            var items = new List<ItemRequest>(); // List<ItemRequest> | Items to create.
 
             try
             {
@@ -417,7 +424,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **items** | [**List<Item>**](Item.md)| Items to create. | 
+ **items** | [**List<ItemRequest>**](ItemRequest.md)| Items to create. | 
 
 ### Return type
 
@@ -502,9 +509,217 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="itemget"></a>
+# **ItemGet**
+> Item ItemGet (string id)
+
+
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
+
+namespace Example
+{
+    public class ItemGetExample
+    {
+        public void main()
+        {
+            
+            // Configure API key authorization: APIKey
+            Configuration.Default.ApiKey.Add("APIKey", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("APIKey", "Bearer");
+            // Configure API key authorization: AccountID
+            Configuration.Default.ApiKey.Add("accountid", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("accountid", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var id = id_example;  // string | Item ID to open.
+
+            try
+            {
+                Item result = apiInstance.ItemGet(id);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.ItemGet: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| Item ID to open. | 
+
+### Return type
+
+[**Item**](Item.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [AccountID](../README.md#AccountID)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="itemmediadelete"></a>
+# **ItemMediaDelete**
+> Response ItemMediaDelete (string imageurl)
+
+
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
+
+namespace Example
+{
+    public class ItemMediaDeleteExample
+    {
+        public void main()
+        {
+            
+            // Configure API key authorization: APIKey
+            Configuration.Default.ApiKey.Add("APIKey", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("APIKey", "Bearer");
+            // Configure API key authorization: AccountID
+            Configuration.Default.ApiKey.Add("accountid", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("accountid", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var imageurl = imageurl_example;  // string | URL of image to remove
+
+            try
+            {
+                Response result = apiInstance.ItemMediaDelete(imageurl);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.ItemMediaDelete: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **imageurl** | **string**| URL of image to remove | 
+
+### Return type
+
+[**Response**](Response.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [AccountID](../README.md#AccountID)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="itemmediapost"></a>
+# **ItemMediaPost**
+> string ItemMediaPost (string id, System.IO.Stream image)
+
+
+
+This endpoint is currently in testing.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
+
+namespace Example
+{
+    public class ItemMediaPostExample
+    {
+        public void main()
+        {
+            
+            // Configure API key authorization: APIKey
+            Configuration.Default.ApiKey.Add("APIKey", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("APIKey", "Bearer");
+            // Configure API key authorization: AccountID
+            Configuration.Default.ApiKey.Add("accountid", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("accountid", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var id = id_example;  // string | Valid item id to bind image to.
+            var image = new System.IO.Stream(); // System.IO.Stream | Image.
+
+            try
+            {
+                string result = apiInstance.ItemMediaPost(id, image);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.ItemMediaPost: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| Valid item id to bind image to. | 
+ **image** | **System.IO.Stream**| Image. | 
+
+### Return type
+
+**string**
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [AccountID](../README.md#AccountID)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data, application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="itemput"></a>
 # **ItemPut**
-> Response ItemPut (string id, Dictionary item)
+> Response ItemPut (string id, ItemRequest item)
 
 
 
@@ -534,7 +749,7 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var id = id_example;  // string | item id to update.
-            var item = new Dictionary(); // Dictionary | New item information.
+            var item = new ItemRequest(); // ItemRequest | New item information.
 
             try
             {
@@ -555,7 +770,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| item id to update. | 
- **item** | [**Dictionary**](Dictionary.md)| New item information. | 
+ **item** | [**ItemRequest**](ItemRequest.md)| New item information. | 
 
 ### Return type
 
@@ -574,7 +789,7 @@ Name | Type | Description  | Notes
 
 <a name="itemscountpost"></a>
 # **ItemsCountPost**
-> decimal? ItemsCountPost (Dictionary query = null)
+> decimal? ItemsCountPost (decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null)
 
 
 
@@ -603,11 +818,13 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("accountid", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var query = new Dictionary(); // Dictionary | Item to query against system. (optional) 
+            var minprice = 3.4;  // decimal? | Min price of items to find (optional) 
+            var maxprice = 3.4;  // decimal? | Max price of items to find (optional) 
+            var query = new ItemRequest(); // ItemRequest | Item to query against system. (optional) 
 
             try
             {
-                decimal? result = apiInstance.ItemsCountPost(query);
+                decimal? result = apiInstance.ItemsCountPost(minprice, maxprice, query);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -623,7 +840,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **query** | [**Dictionary**](Dictionary.md)| Item to query against system. | [optional] 
+ **minprice** | **decimal?**| Min price of items to find | [optional] 
+ **maxprice** | **decimal?**| Max price of items to find | [optional] 
+ **query** | [**ItemRequest**](ItemRequest.md)| Item to query against system. | [optional] 
 
 ### Return type
 
@@ -642,7 +861,7 @@ Name | Type | Description  | Notes
 
 <a name="itemspost"></a>
 # **ItemsPost**
-> List<Item> ItemsPost (Dictionary query = null)
+> List<Item> ItemsPost (decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null)
 
 
 
@@ -671,11 +890,13 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("accountid", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var query = new Dictionary(); // Dictionary | Item to query against system. (optional) 
+            var minprice = 3.4;  // decimal? | Min price of items to find (optional) 
+            var maxprice = 3.4;  // decimal? | Max price of items to find (optional) 
+            var query = new ItemRequest(); // ItemRequest | Item to query against system. (optional) 
 
             try
             {
-                List&lt;Item&gt; result = apiInstance.ItemsPost(query);
+                List&lt;Item&gt; result = apiInstance.ItemsPost(minprice, maxprice, query);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -691,7 +912,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **query** | [**Dictionary**](Dictionary.md)| Item to query against system. | [optional] 
+ **minprice** | **decimal?**| Min price of items to find | [optional] 
+ **maxprice** | **decimal?**| Max price of items to find | [optional] 
+ **query** | [**ItemRequest**](ItemRequest.md)| Item to query against system. | [optional] 
 
 ### Return type
 
@@ -708,77 +931,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="itemsallfieldspost"></a>
-# **ItemsallfieldsPost**
-> List<Dictionary> ItemsallfieldsPost (Dictionary query = null)
-
-
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using IO.InventoryClient.Api;
-using IO.InventoryClient.Client;
-using IO.InventoryClient.Model;
-
-namespace Example
-{
-    public class ItemsallfieldsPostExample
-    {
-        public void main()
-        {
-            
-            // Configure API key authorization: APIKey
-            Configuration.Default.ApiKey.Add("APIKey", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("APIKey", "Bearer");
-            // Configure API key authorization: AccountID
-            Configuration.Default.ApiKey.Add("accountid", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("accountid", "Bearer");
-
-            var apiInstance = new DefaultApi();
-            var query = new Dictionary(); // Dictionary | Item to query against system. (optional) 
-
-            try
-            {
-                List&lt;Dictionary&gt; result = apiInstance.ItemsallfieldsPost(query);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.ItemsallfieldsPost: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **query** | [**Dictionary**](Dictionary.md)| Item to query against system. | [optional] 
-
-### Return type
-
-**List<Dictionary>**
-
-### Authorization
-
-[APIKey](../README.md#APIKey), [AccountID](../README.md#AccountID)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="orderspost"></a>
 # **OrdersPost**
-> List<Order> OrdersPost (Dictionary query = null)
+> List<Order> OrdersPost (OrderRequest query = null)
 
 
 
@@ -807,7 +962,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("accountid", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var query = new Dictionary(); // Dictionary | Order to query against system. (optional) 
+            var query = new OrderRequest(); // OrderRequest | Order to query against item invoices. (optional) 
 
             try
             {
@@ -827,7 +982,75 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **query** | [**Dictionary**](Dictionary.md)| Order to query against system. | [optional] 
+ **query** | [**OrderRequest**](OrderRequest.md)| Order to query against item invoices. | [optional] 
+
+### Return type
+
+[**List<Order>**](Order.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [AccountID](../README.md#AccountID)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="ordersservicespost"></a>
+# **OrdersServicesPost**
+> List<Order> OrdersServicesPost (OrderRequest query = null)
+
+
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
+
+namespace Example
+{
+    public class OrdersServicesPostExample
+    {
+        public void main()
+        {
+            
+            // Configure API key authorization: APIKey
+            Configuration.Default.ApiKey.Add("APIKey", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("APIKey", "Bearer");
+            // Configure API key authorization: AccountID
+            Configuration.Default.ApiKey.Add("accountid", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("accountid", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var query = new OrderRequest(); // OrderRequest | Order to query against service invoices. (optional) 
+
+            try
+            {
+                List&lt;Order&gt; result = apiInstance.OrdersServicesPost(query);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.OrdersServicesPost: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **query** | [**OrderRequest**](OrderRequest.md)| Order to query against service invoices. | [optional] 
 
 ### Return type
 
@@ -846,7 +1069,7 @@ Name | Type | Description  | Notes
 
 <a name="querypost"></a>
 # **QueryPost**
-> List<Item> QueryPost (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, Dictionary query = null)
+> List<Item> QueryPost (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, ItemRequest query = null)
 
 
 
@@ -879,9 +1102,9 @@ namespace Example
             var categoryid = categoryid_example;  // string | Get items under specified category id. (optional) 
             var sort = sort_example;  // string | Comma delimited Sort string. ie ; +ordprice. Please use number based fields only (optional) 
             var search = search_example;  // string | Performs a regex pattern match against the items within your account (optional) 
-            var minprice = 3.4;  // decimal? | Min price in hundreds. (optional) 
-            var maxprice = 3.4;  // decimal? | Max price in hudreds. (optional) 
-            var query = new Dictionary(); // Dictionary | Custom parameters to query against system. (optional) 
+            var minprice = 3.4;  // decimal? | Min price in hundreds (cents). (optional) 
+            var maxprice = 3.4;  // decimal? | Max price in hundreds (cents). (optional) 
+            var query = new ItemRequest(); // ItemRequest | Custom parameters to query against system. (optional) 
 
             try
             {
@@ -905,93 +1128,13 @@ Name | Type | Description  | Notes
  **categoryid** | **string**| Get items under specified category id. | [optional] 
  **sort** | **string**| Comma delimited Sort string. ie ; +ordprice. Please use number based fields only | [optional] 
  **search** | **string**| Performs a regex pattern match against the items within your account | [optional] 
- **minprice** | **decimal?**| Min price in hundreds. | [optional] 
- **maxprice** | **decimal?**| Max price in hudreds. | [optional] 
- **query** | [**Dictionary**](Dictionary.md)| Custom parameters to query against system. | [optional] 
+ **minprice** | **decimal?**| Min price in hundreds (cents). | [optional] 
+ **maxprice** | **decimal?**| Max price in hundreds (cents). | [optional] 
+ **query** | [**ItemRequest**](ItemRequest.md)| Custom parameters to query against system. | [optional] 
 
 ### Return type
 
 [**List<Item>**](Item.md)
-
-### Authorization
-
-[APIKey](../README.md#APIKey), [AccountID](../README.md#AccountID)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="queryallfieldspost"></a>
-# **QueryallfieldsPost**
-> List<Dictionary> QueryallfieldsPost (decimal? page = null, string categoryid = null, string sort = null, string search = null, decimal? minprice = null, decimal? maxprice = null, Dictionary query = null)
-
-
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using IO.InventoryClient.Api;
-using IO.InventoryClient.Client;
-using IO.InventoryClient.Model;
-
-namespace Example
-{
-    public class QueryallfieldsPostExample
-    {
-        public void main()
-        {
-            
-            // Configure API key authorization: APIKey
-            Configuration.Default.ApiKey.Add("APIKey", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("APIKey", "Bearer");
-            // Configure API key authorization: AccountID
-            Configuration.Default.ApiKey.Add("accountid", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("accountid", "Bearer");
-
-            var apiInstance = new DefaultApi();
-            var page = 3.4;  // decimal? | Current page index. (optional) 
-            var categoryid = categoryid_example;  // string | Get items under specified category id. (optional) 
-            var sort = sort_example;  // string | Comma delimited Sort string. ie ; +ordprice. Please use number based fields only (optional) 
-            var search = search_example;  // string | Performs a regex pattern match against the items within your account (optional) 
-            var minprice = 3.4;  // decimal? | Min price in hundreds. (optional) 
-            var maxprice = 3.4;  // decimal? | Max price in hudreds. (optional) 
-            var query = new Dictionary(); // Dictionary | Custom parameters to query against system. (optional) 
-
-            try
-            {
-                List&lt;Dictionary&gt; result = apiInstance.QueryallfieldsPost(page, categoryid, sort, search, minprice, maxprice, query);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.QueryallfieldsPost: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **decimal?**| Current page index. | [optional] 
- **categoryid** | **string**| Get items under specified category id. | [optional] 
- **sort** | **string**| Comma delimited Sort string. ie ; +ordprice. Please use number based fields only | [optional] 
- **search** | **string**| Performs a regex pattern match against the items within your account | [optional] 
- **minprice** | **decimal?**| Min price in hundreds. | [optional] 
- **maxprice** | **decimal?**| Max price in hudreds. | [optional] 
- **query** | [**Dictionary**](Dictionary.md)| Custom parameters to query against system. | [optional] 
-
-### Return type
-
-**List<Dictionary>**
 
 ### Authorization
 
@@ -1136,9 +1279,77 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="servicesopenget"></a>
+# **ServicesOpenGet**
+> Service ServicesOpenGet (string id)
+
+
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
+
+namespace Example
+{
+    public class ServicesOpenGetExample
+    {
+        public void main()
+        {
+            
+            // Configure API key authorization: APIKey
+            Configuration.Default.ApiKey.Add("APIKey", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("APIKey", "Bearer");
+            // Configure API key authorization: AccountID
+            Configuration.Default.ApiKey.Add("accountid", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("accountid", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var id = id_example;  // string | ID of service to open
+
+            try
+            {
+                Service result = apiInstance.ServicesOpenGet(id);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.ServicesOpenGet: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| ID of service to open | 
+
+### Return type
+
+[**Service**](Service.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [AccountID](../README.md#AccountID)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="servicespost"></a>
 # **ServicesPost**
-> Service ServicesPost (Service service)
+> Service ServicesPost (ServiceRequest service)
 
 
 
@@ -1167,7 +1378,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("accountid", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var service = new Service(); // Service | Service to create.
+            var service = new ServiceRequest(); // ServiceRequest | Service to create.
 
             try
             {
@@ -1187,7 +1398,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service** | [**Service**](Service.md)| Service to create. | 
+ **service** | [**ServiceRequest**](ServiceRequest.md)| Service to create. | 
 
 ### Return type
 
@@ -1206,7 +1417,7 @@ Name | Type | Description  | Notes
 
 <a name="servicesput"></a>
 # **ServicesPut**
-> Response ServicesPut (string id, Service service)
+> Response ServicesPut (string id, ServiceRequest service)
 
 
 
@@ -1236,7 +1447,7 @@ namespace Example
 
             var apiInstance = new DefaultApi();
             var id = id_example;  // string | ID of the service to update
-            var service = new Service(); // Service | New service data to set.
+            var service = new ServiceRequest(); // ServiceRequest | New service data to set.
 
             try
             {
@@ -1257,7 +1468,283 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| ID of the service to update | 
- **service** | [**Service**](Service.md)| New service data to set. | 
+ **service** | [**ServiceRequest**](ServiceRequest.md)| New service data to set. | 
+
+### Return type
+
+[**Response**](Response.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [AccountID](../README.md#AccountID)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="variationdelete"></a>
+# **VariationDelete**
+> Response VariationDelete (string id)
+
+
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
+
+namespace Example
+{
+    public class VariationDeleteExample
+    {
+        public void main()
+        {
+            
+            // Configure API key authorization: APIKey
+            Configuration.Default.ApiKey.Add("APIKey", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("APIKey", "Bearer");
+            // Configure API key authorization: AccountID
+            Configuration.Default.ApiKey.Add("accountid", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("accountid", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var id = id_example;  // string | variation id to remove
+
+            try
+            {
+                Response result = apiInstance.VariationDelete(id);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.VariationDelete: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| variation id to remove | 
+
+### Return type
+
+[**Response**](Response.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [AccountID](../README.md#AccountID)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="variationget"></a>
+# **VariationGet**
+> Variation VariationGet (string id)
+
+
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
+
+namespace Example
+{
+    public class VariationGetExample
+    {
+        public void main()
+        {
+            
+            // Configure API key authorization: APIKey
+            Configuration.Default.ApiKey.Add("APIKey", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("APIKey", "Bearer");
+            // Configure API key authorization: AccountID
+            Configuration.Default.ApiKey.Add("accountid", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("accountid", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var id = id_example;  // string | Variation ID to open.
+
+            try
+            {
+                Variation result = apiInstance.VariationGet(id);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.VariationGet: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| Variation ID to open. | 
+
+### Return type
+
+[**Variation**](Variation.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [AccountID](../README.md#AccountID)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="variationpost"></a>
+# **VariationPost**
+> Response VariationPost (string id, Variation item)
+
+
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
+
+namespace Example
+{
+    public class VariationPostExample
+    {
+        public void main()
+        {
+            
+            // Configure API key authorization: APIKey
+            Configuration.Default.ApiKey.Add("APIKey", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("APIKey", "Bearer");
+            // Configure API key authorization: AccountID
+            Configuration.Default.ApiKey.Add("accountid", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("accountid", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var id = id_example;  // string | Valid item id to bind variation to.
+            var item = new Variation(); // Variation | Variation information.
+
+            try
+            {
+                Response result = apiInstance.VariationPost(id, item);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.VariationPost: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| Valid item id to bind variation to. | 
+ **item** | [**Variation**](Variation.md)| Variation information. | 
+
+### Return type
+
+[**Response**](Response.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [AccountID](../README.md#AccountID)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="variationput"></a>
+# **VariationPut**
+> Response VariationPut (string id, Variation item)
+
+
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.InventoryClient.Api;
+using IO.InventoryClient.Client;
+using IO.InventoryClient.Model;
+
+namespace Example
+{
+    public class VariationPutExample
+    {
+        public void main()
+        {
+            
+            // Configure API key authorization: APIKey
+            Configuration.Default.ApiKey.Add("APIKey", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("APIKey", "Bearer");
+            // Configure API key authorization: AccountID
+            Configuration.Default.ApiKey.Add("accountid", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("accountid", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var id = id_example;  // string | variation id to update.
+            var item = new Variation(); // Variation | New variation information.
+
+            try
+            {
+                Response result = apiInstance.VariationPut(id, item);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.VariationPut: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| variation id to update. | 
+ **item** | [**Variation**](Variation.md)| New variation information. | 
 
 ### Return type
 

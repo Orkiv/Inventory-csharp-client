@@ -86,7 +86,7 @@ limitations under the License.
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
       <ProjectReference Include="..\IO.InventoryClient\IO.InventoryClient.csproj">
-          <Project>{4391B512-D602-40EA-9137-3121C2FD3B3D}</Project>
+          <Project>{1B3D410E-817D-45A7-B6DB-C2B9E7823A2D}</Project>
           <Name>IO.InventoryClient</Name>
       </ProjectReference>
   </ItemGroup>

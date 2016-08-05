@@ -34,13 +34,13 @@ using Newtonsoft.Json.Converters;
 namespace IO.InventoryClient.Model
 {
     /// <summary>
-    /// Item
+    /// ItemRequest
     /// </summary>
     [DataContract]
-    public partial class Item :  IEquatable<Item>
+    public partial class ItemRequest :  IEquatable<ItemRequest>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Item" /> class.
+        /// Initializes a new instance of the <see cref="ItemRequest" /> class.
         /// </summary>
         /// <param name="Id">ID of item.</param>
         /// <param name="Category">Category ID of item.</param>
@@ -48,11 +48,8 @@ namespace IO.InventoryClient.Model
         /// <param name="Name">Name of item.</param>
         /// <param name="Ordprice">Integer value of price.</param>
         /// <param name="Price">String value of price.</param>
-        /// <param name="Variations">Variations.</param>
         /// <param name="Quantity">Inventory quantity.</param>
-        /// <param name="Media">Array of item media.</param>
-        /// <param name="Buy">Link to checkout page of item.</param>
-        public Item(string Id = null, string Category = null, string Desc = null, string Name = null, decimal? Ordprice = null, string Price = null, List<Variation> Variations = null, string Quantity = null, List<string> Media = null, string Buy = null)
+        public ItemRequest(string Id = null, string Category = null, string Desc = null, string Name = null, decimal? Ordprice = null, string Price = null, string Quantity = null)
         {
             this.Id = Id;
             this.Category = Category;
@@ -60,10 +57,7 @@ namespace IO.InventoryClient.Model
             this.Name = Name;
             this.Ordprice = Ordprice;
             this.Price = Price;
-            this.Variations = Variations;
             this.Quantity = Quantity;
-            this.Media = Media;
-            this.Buy = Buy;
         }
         
         /// <summary>
@@ -103,28 +97,11 @@ namespace IO.InventoryClient.Model
         [DataMember(Name="price", EmitDefaultValue=false)]
         public string Price { get; set; }
         /// <summary>
-        /// Gets or Sets Variations
-        /// </summary>
-        [DataMember(Name="variations", EmitDefaultValue=false)]
-        public List<Variation> Variations { get; set; }
-        /// <summary>
         /// Inventory quantity
         /// </summary>
         /// <value>Inventory quantity</value>
         [DataMember(Name="quantity", EmitDefaultValue=false)]
         public string Quantity { get; set; }
-        /// <summary>
-        /// Array of item media
-        /// </summary>
-        /// <value>Array of item media</value>
-        [DataMember(Name="media", EmitDefaultValue=false)]
-        public List<string> Media { get; set; }
-        /// <summary>
-        /// Link to checkout page of item
-        /// </summary>
-        /// <value>Link to checkout page of item</value>
-        [DataMember(Name="Buy", EmitDefaultValue=false)]
-        public string Buy { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -132,17 +109,14 @@ namespace IO.InventoryClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Item {\n");
+            sb.Append("class ItemRequest {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Category: ").Append(Category).Append("\n");
             sb.Append("  Desc: ").Append(Desc).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Ordprice: ").Append(Ordprice).Append("\n");
             sb.Append("  Price: ").Append(Price).Append("\n");
-            sb.Append("  Variations: ").Append(Variations).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
-            sb.Append("  Media: ").Append(Media).Append("\n");
-            sb.Append("  Buy: ").Append(Buy).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -164,15 +138,15 @@ namespace IO.InventoryClient.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as Item);
+            return this.Equals(obj as ItemRequest);
         }
 
         /// <summary>
-        /// Returns true if Item instances are equal
+        /// Returns true if ItemRequest instances are equal
         /// </summary>
-        /// <param name="other">Instance of Item to be compared</param>
+        /// <param name="other">Instance of ItemRequest to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Item other)
+        public bool Equals(ItemRequest other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -210,24 +184,9 @@ namespace IO.InventoryClient.Model
                     this.Price.Equals(other.Price)
                 ) && 
                 (
-                    this.Variations == other.Variations ||
-                    this.Variations != null &&
-                    this.Variations.SequenceEqual(other.Variations)
-                ) && 
-                (
                     this.Quantity == other.Quantity ||
                     this.Quantity != null &&
                     this.Quantity.Equals(other.Quantity)
-                ) && 
-                (
-                    this.Media == other.Media ||
-                    this.Media != null &&
-                    this.Media.SequenceEqual(other.Media)
-                ) && 
-                (
-                    this.Buy == other.Buy ||
-                    this.Buy != null &&
-                    this.Buy.Equals(other.Buy)
                 );
         }
 
@@ -254,14 +213,8 @@ namespace IO.InventoryClient.Model
                     hash = hash * 59 + this.Ordprice.GetHashCode();
                 if (this.Price != null)
                     hash = hash * 59 + this.Price.GetHashCode();
-                if (this.Variations != null)
-                    hash = hash * 59 + this.Variations.GetHashCode();
                 if (this.Quantity != null)
                     hash = hash * 59 + this.Quantity.GetHashCode();
-                if (this.Media != null)
-                    hash = hash * 59 + this.Media.GetHashCode();
-                if (this.Buy != null)
-                    hash = hash * 59 + this.Buy.GetHashCode();
                 return hash;
             }
         }
